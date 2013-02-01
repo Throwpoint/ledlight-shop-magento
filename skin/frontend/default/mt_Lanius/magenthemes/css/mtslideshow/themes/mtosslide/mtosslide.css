@@ -1,0 +1,141 @@
+.mt_ios-slider-wrapper{ 
+	margin:0 auto 0; 
+	background:#fff;
+	border:1px solid #C6C6C3;
+	box-shadow:none;
+	position:relative; 
+	width:700px !important;
+} 
+.mt_ios-slider-wrapper-inner{background:#fff;padding:5px;}
+@media (min-width: 1200px) {
+	.mt_iosslider { 
+		margin: 0 auto;
+		height: 462px !important ;
+		overflow: hidden;
+		width:700px !important;
+	} 
+}
+@media (min-width: 768px) and (max-width: 979px) {
+	.mt_iosslider { 
+		margin: 0 auto;
+		height: 215px !important;
+		overflow: hidden;
+	} 
+} 
+@media (max-width: 480px){
+	.mt_iosslider { 
+		margin: 0 auto;
+		height: 130px;
+		overflow: hidden;
+	} 
+}
+@media (max-width: 320px){
+	.mt_iosslider { 
+		margin: 0 auto;
+		height: 80px;
+		overflow: hidden;
+	} 
+}
+.mt_iosslider .slider {
+	width: 100%;
+	height: 100%;
+} 
+.mt_iosslider .slider .item {
+	position: relative;
+	top: 0;
+	left: 0; 
+	background: #fff;
+	margin: 0 0 0 0; 
+	width: 100%;
+	height: 100%;
+}
+.mt_ios-slider-wrapper .loading {
+	background:#fff url(../mtosslide/images/loading.gif) no-repeat center;
+}
+.prevButton {
+	position: absolute;
+	top: 45%;
+	left: -30px;
+	width: 20px;
+	height: 36px;
+	background: url(../mtosslide/images/arrows.png) no-repeat 0 0;
+	z-index: 10;
+	cursor: pointer;
+}
+.prevButton:hover{
+	background: url(../mtosslide/images/arrows.png) no-repeat 0 100%;
+}
+
+.nextButton {
+	position: absolute;
+	top: 45%;
+	right: -30px;
+	width: 20px;
+	height: 36px;
+	background: url(../mtosslide/images/arrows.png) no-repeat 100% 0;
+	z-index: 10;
+	cursor: pointer;
+}
+.nextButton:hover{
+	background: url(../mtosslide/images/arrows.png) no-repeat 100% 100%;
+}
+
+.mt_iosslider .slider .item .title {
+	width:470px;
+	position: absolute;
+	top: 161px;
+	left: 100px;
+	background:url(images/transparent_bg.png) repeat 0 0;
+	padding: 5px 20px 0;
+	text-align:left; 
+	opacity: 0;
+	filter: alpha(opacity:0); 
+}
+
+.mt_iosslider .slider .item .title span {
+	color: #fff;
+	font-size:22px;
+	padding: 0;
+	text-transform:uppercase;
+}
+
+.mt_iosslider .slider .item .description {
+	width:470px;
+	position: absolute;
+	top: 200px;
+	left: 100px;
+	background:url(images/transparent_bg.png) repeat 0 0;
+	padding: 5px 20px 13px;
+	text-align:left; 
+	opacity: 0;
+	filter: alpha(opacity:0); 
+}
+
+.mt_iosslider .slider .item .description span {
+	color: #fff; 
+}
+
+.mt_iosPagenav {
+	position: absolute;
+	bottom: 10px;
+	left: 10px;
+	width: 200px;
+	height: 10px;
+}
+
+.mt_iosPagenav .button {
+	float: left;
+	width: 9px;
+	height: 9px;
+	background: #999;
+	margin: 0 10px 0 0;
+	opacity: 0.25;
+	filter: alpha(opacity:25);
+	border: 1px solid #000;
+}
+
+.mt_iosPagenav .selected {
+	background: #000;
+	opacity: 1;
+	filter: alpha(opacity:100);
+}

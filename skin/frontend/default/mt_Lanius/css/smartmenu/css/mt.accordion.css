@@ -1,0 +1,171 @@
+#mt-accordion 
+	{ 
+		margin:0; 
+		padding:10px 10px 40px;
+	}
+.side-col .box
+	{
+		clear:both;
+	}
+#mt-accordion li
+	{
+		
+		line-height:33px;
+		font-weight:normal;
+		list-style:none;
+		
+	}
+/* Some list and link styling */
+#mt-accordion ul li
+	{
+		padding-left:10px;
+	}
+#mt-accordion ul ul li 
+	{ 
+		border:none !important; 
+		padding: 0; margin-bottom: 0
+		; 
+	}
+#mt-accordion ul ul
+	{
+		display:block !important;
+	}
+#mt-accordion ul ul li a,#mt-accordion ul li a
+	{
+		background:url("../images/menu_bg_li1.gif") no-repeat scroll 0 12px transparent;
+		padding-left:15px;
+		font-weight:normal;
+	}
+#mt-accordion ul  li a 
+	{ 
+		text-decoration:none;
+		text-transform:none;
+		color:#888;   
+	}
+
+
+/* For the xtra menu */
+
+#mt-accordion ul ul li 
+	{   
+		margin-bottom: 0; 
+	}
+#mt-accordion ul ul li
+	{
+		padding-left:10px;
+	}
+#mt-accordion ul ul li a 
+	{
+		background:url("../images/menu_bg_li2.gif") no-repeat scroll 0 9px transparent; 
+		color: #444444;
+		padding-left:15px;
+	}
+#mt-accordion ul ul li 
+	{
+		border:none;
+	}
+#mt-accordion span  a
+	{
+		width:16px;
+	}
+#mt-accordion li a
+	{
+		text-transform:none;
+		color:#888;
+		text-decoration:none; 
+		font-weight:normal; 
+		font-size:12px;
+		
+	}
+#mt-accordion li a:hover
+	{
+		/*text-decoration:underline;*/
+		font-weight:bold !important;
+	
+	}
+#mt-accordion ul
+	{
+		padding:0px;
+	}
+#mt-accordion ul ul 
+	{
+		float:left;
+		padding:0px;
+		width:100%;
+	}
+#mt-accordion ul,#mt-accordion ul ul,#mt-accordion ul ul ul , #mt-accordionul ul ul ul
+	{
+		padding:0;
+		margin:0;
+	}
+/* Header links styling */
+#mt-accordion span.head a 
+	{ 
+		background: url(../images/menu_down.gif) no-repeat; 
+		color:#333333;
+		display:block;
+		height:15px;
+		margin-top:5px;
+		padding:0;
+		width:15px;
+	}
+#mt-accordion span.head a:hover 
+	{ 
+		color: #000;
+		background: url(../images/menu_down.gif) no-repeat; 
+		background-position: 98% 50%;		
+	}
+#mt-accordion span.selected a 
+	{ 
+		background:  url(../images/menu_up.gif) no-repeat; 
+		background-position:98% 50%;
+		color: #fff;
+		padding:0px;
+	}
+#mt-accordion span.selected a:hover 
+	{ 
+		background: url(../images/menu_up.gif) no-repeat; 
+		background-position:98% 50%;
+		color: #36a;
+	}
+#mt-accordion li.active a 
+	{
+		font-weight:bold;
+	}
+#mt-accordion li.active ul li a {
+		font-weight:normal;
+		color:#888;
+	}
+#mt-accordion li.active ul li a:hover{color:#CF4155;} 	
+#mt-accordion li.active ul li.active ul li.active a {
+		font-weight:bold;
+	}
+#mt-accordion li.active ul li.active ul li a {
+		font-weight:normal;
+	}
+#mt-accordion li.active ul li.active a {
+		font-weight:bold;
+}
+#mt-accordion li a
+	{
+		float:left;
+	}
+#mt-accordion ul
+	{
+		float:left;
+		clear:both;
+	}			
+#mt-accordion li
+	{
+		
+		clear:both;
+	}	
+	
+#mt-accordion ul li
+	{
+		width:165px;
+	}
+#mt-accordion ul ul li
+	{
+		width:155px;
+	}

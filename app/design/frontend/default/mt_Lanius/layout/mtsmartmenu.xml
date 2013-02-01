@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<layout version="0.1.0">
+	 <default>
+		  <reference name="head">
+				<action method="addCss"><stylesheet>magenthemes/mtsmartmenu/css/mt.accordion.css</stylesheet></action>
+            <action method="addCss"><stylesheet>magenthemes/mtsmartmenu/css/mt.dropdown.css</stylesheet></action>
+				<action method="addCss"><stylesheet>magenthemes/mtsmartmenu/css/mt.tree.css</stylesheet></action>
+		  </reference>
+		  <reference name="left">
+				<block type="mtsmartmenu/mtsmartmenu" name="mtsmartmenu" before="-" template="magenthemes/mtsmartmenu/mtsmartmenu.phtml" />
+			 </reference>
+	 </default>
+    <mtsmartmenu_index_index>
+        
+    </mtsmartmenu_index_index>
+</layout> 

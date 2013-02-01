@@ -1,0 +1,22 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * @package MT Slideshow module for Magento 1.4.x.x, Magento 1.5.x.x and Magento 1.6.x.x
+ * @version 2.0.0
+ * @author http://www.magentheme.com
+ * @copyright (C) 2011- MagenTheme.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<layout version="0.1.0">
+	<default>
+	<reference name="head">	
+		<action method="addJs"><script>magenthemes/mtslideshow/slideshow.gallery.js</script></action>
+    	</reference>
+	</default>
+	<mtslideshow_adminhtml_mtslideshow_index>
+		<reference name="content">
+			<block type="mtslideshow/adminhtml_mtslideshow" name="mtslideshow" />
+		</reference>
+	</mtslideshow_adminhtml_mtslideshow_index>
+</layout>

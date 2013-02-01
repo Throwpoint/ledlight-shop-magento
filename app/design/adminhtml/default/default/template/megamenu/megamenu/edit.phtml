@@ -1,0 +1,202 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<div id="megamenu-edit-container" class="megamenu-content">
+    <?php echo $this->getChildHtml('form') ?>
+</div>
+<script type="text/javascript">
+    var parent = 0;
+    function afterClick(id, storeId) {
+        parent = id;
+        var url = '<?php echo $this->getUrl('megamenu/adminhtml_megamenu/edit'); ?>';
+        var request = new Ajax.Request(url,{
+            parameters : { id : id, storeId : storeId },
+            method: 'post',
+            onSuccess: processResponeAfterClick.bind(this),
+        });
+    }
+    
+    function processResponeAfterClick(transport) {
+        var response;
+        if (transport && transport.responseText){
+            try{
+                response = eval('(' + transport.responseText + ')');
+            }
+            catch (e) {
+                response = {};
+            }
+        }
+        
+        if(response.messages) {
+            alert(response.messages);
+            return;
+        }
+        
+        if(response.content)
+            $('megamenu-edit-container').update(response.content);
+    }
+    
+    function afterMove(parentId, moveId) {
+        var url = '<?php echo $this->getUrl('megamenu/adminhtml_megamenu/move'); ?>';
+        var sorted = '';
+        $$('#single-tree li').each(function(element){
+                if(element.id != '') {
+                    sorted += element.id + ',';
+                }
+            });
+        new Ajax.Request(url,{
+                    parameters: { ids : sorted, move_id : moveId, parent_id : parentId },
+                    onFailure: function() { window.location = '<?php echo $this->getUrl('*/*/index') ?>' }
+                });
+    }
+    
+    function changeType(type) {
+        if('megamenu_' + type == 'megamenu_cms_page') {
+            $('megamenu_category').hide();
+            $('megamenu_category').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_static_block').hide();
+            $('megamenu_static_block').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_external_link').hide();
+            $('megamenu_external_link').down('td.value').down('input').setAttribute('disabled', 'disabled');
+            $('megamenu_' + type).show();
+            $('megamenu_' + type).down('td.value').down('select').removeAttribute('disabled');
+        }
+        
+        if('megamenu_' + type == 'megamenu_category') {
+            $('megamenu_cms_page').hide();
+            $('megamenu_cms_page').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_static_block').hide();
+            $('megamenu_static_block').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_external_link').hide();
+            $('megamenu_external_link').down('td.value').down('input').setAttribute('disabled', 'disabled');
+            $('megamenu_' + type).show();
+            $('megamenu_' + type).down('td.value').down('select').removeAttribute('disabled');
+        }
+        
+        if('megamenu_' + type == 'megamenu_static_block') {
+            $('megamenu_category').hide();
+            $('megamenu_category').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_cms_page').hide();
+            $('megamenu_cms_page').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_external_link').hide();
+            $('megamenu_external_link').down('td.value').down('input').setAttribute('disabled', 'disabled');
+            $('megamenu_' + type).show();
+            $('megamenu_' + type).down('td.value').down('select').removeAttribute('disabled');
+        }
+        
+        if('megamenu_' + type == 'megamenu_external_link') {
+            $('megamenu_category').hide();
+            $('megamenu_category').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_cms_page').hide();
+            $('megamenu_cms_page').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_static_block').hide();
+            $('megamenu_static_block').down('td.value').down('select').setAttribute('disabled', 'disabled');
+            $('megamenu_' + type).show();
+            $('megamenu_' + type).down('td.value').down('input').removeAttribute('disabled');
+        }
+    }
+    
+    var megamenuForm = new varienForm('megamenu_edit_form');
+
+    megamenuForm.submit = function (url, useAjax) {
+        var validator = new Validation('megamenu_edit_form');
+        if(validator.validate()) {  
+            if(useAjax) {
+                /*var params = Form.serialize('megamenu_edit_form');
+                params += '&store_id=' + $('store_switcher').value;
+                new Ajax.Request(url, {
+                        method:'post',
+                        parameters:params,
+                        onSuccess: megamenuForm.processRespone.bind(this),
+                    });*/
+                if (this.isSubmitted) {
+                    return false;
+                }
+                this.isSubmitted = true;
+                this._submit();
+                displayLoadingMask();
+                return true;
+            }
+        }
+        return false;
+    };
+    
+    function displayLoadingMask()
+    {
+        $('loading-mask').show();
+    }
+    
+    megamenuForm.processRespone = function(transport) {
+        var response;
+        if (transport && transport.responseText){
+            try{
+                response = eval('(' + transport.responseText + ')');
+            }
+            catch (e) {
+                response = {};
+            }
+        }
+        
+        if(response.redirect)
+            window.location = response.redirect;
+    };
+    
+    function importCategories(url) {
+        var store_id = $('store_switcher') == undefined ? 0 : $('store_switcher').value;
+        var request = new Ajax.Request(url,{
+            parameters: { store_id : store_id },
+            //method: 'post',
+            onSuccess: function(){ window.location = '<?php echo $this->getUrl('*/*/index') ?>' },
+            //onFailure: function() { window.location = '<?php echo $this->getUrl('*/*/index') ?>' }
+        });
+    }
+    
+    function addNew(url, isRoot) {
+        var store_id = $('store_switcher') == undefined ? 0 : $('store_switcher').value;
+	if(isRoot) {
+	    var request = new Ajax.Request(url,{
+		parameters : { storeId: store_id, parent: 0 },
+		method: 'post',
+		onSuccess: processResponeAddNew.bind(this),
+	    });
+	} else {
+	    var request = new Ajax.Request(url,{
+		parameters : { storeId: store_id, parent : parent },
+		method: 'post',
+		onSuccess: processResponeAddNew.bind(this),
+	    });
+	}
+    }
+    
+    function processResponeAddNew(transport) {
+        var response;
+        if (transport && transport.responseText){
+            try{
+                response = eval('(' + transport.responseText + ')');
+            }
+            catch (e) {
+                response = {};
+            }
+        }
+        
+        if(response.messages) {
+            alert(response.messages);
+            return;
+        }
+        
+        if(response.content)
+            $('megamenu-edit-container').update(response.content);
+    }
+    
+    function megamenuDelete(url, id) {
+        if (confirm('<?php echo Mage::helper('catalog')->__('Are you sure you want to delete this megamenu?') ?>')){
+            window.location = url + 'id/' + id;
+        }
+    }
+</script>

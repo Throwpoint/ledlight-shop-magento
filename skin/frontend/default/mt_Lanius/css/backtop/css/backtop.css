@@ -1,0 +1,39 @@
+#back-top {
+	position: fixed;
+	bottom: 30px;
+	margin-left: -150px;
+	right: 5px;
+	z-index:9999;
+}
+#back-top a {
+	width: 46px;
+	display: block;
+	text-align: center;
+	font: 11px/100% Arial, Helvetica, sans-serif;
+	text-transform: uppercase;
+	text-decoration: none;
+	color: #bbb;
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover {
+	color: #000;
+}
+/* arrow icon (span tag) */
+#back-top span {
+	width: 46px;
+	height: 46px;
+	display: block;
+	margin-bottom: 7px;
+	background: url(../images/up-arrow.png) no-repeat 0 0;
+	/* rounded corners */  
+	/* background color transition */
+	-webkit-transition: 1s;
+	-moz-transition: 1s;
+	transition: 1s;
+}
+#back-top a:hover span {
+	background: url(../images/up-arrow.png) no-repeat 0 -46px;
+}

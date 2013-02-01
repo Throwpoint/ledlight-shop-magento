@@ -1,0 +1,27 @@
+<?php if ($this->getIsNeedToDisplaySideBar()):?>
+<?php $_cartQty = $this->getSummaryCount() ?>
+<span class="cart-loading">Loading...</span>
+<div class="cart">
+   	<a href="<?php echo $this->getUrl('checkout/cart') ?>" class="cart-link">(<?php print (!empty($_cartQty)) ? $_cartQty : '0' ;?>) <?php echo $this->__('Cart Subtotal:') ?></span> <?php echo Mage::helper('checkout')->formatPrice($this->getSubtotal()) ?></a>
+	<div class="mtajaxcart">
+		<div class="ajax-container">
+	        <?php
+				$_items = $this->getRecentItems($_cartQty);
+				if(count($_items)):
+			?>
+				<span class="title-cart"><?php echo $this->__('Recently Added') ?> </span>
+				<ul>
+	                <?php foreach($_items as $_item): ?>
+	                    <?php echo $this->getItemHtml($_item) ?>
+	                <?php endforeach; ?>
+				</ul>
+				<div class="ajax-checkout">
+					<a class="view-cart" href="<?php echo Mage::helper('checkout/cart')->getCartUrl(); ?>"><span><?php echo $this->__('View Cart') ?></span></a><a href="<?php echo $this->getCheckoutUrl() ?>"><span><?php echo $this->__('Checkout') ?></span></a>
+				</div>
+	         <?php else: ?>
+	         	<p class="no-items-in-cart"><?php echo $this->__('You have no items in your shopping cart.') ?></p>
+	         <?php endif ?>
+		</div>
+	</div>
+</div>
+<?php endif ?>

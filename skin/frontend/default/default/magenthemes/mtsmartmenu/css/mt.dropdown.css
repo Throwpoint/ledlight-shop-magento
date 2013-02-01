@@ -1,0 +1,48 @@
+
+#mt-dropdown { padding:0; font-size:1.1em;}
+
+
+/************** ALL LEVELS  *************/ /* Style consistent throughout all nav levels */
+#mt-dropdown li { position:relative; text-align:left; width:100%;line-height:25px; height:25px; float:left;}
+#mt-dropdown li.over { z-index:999;}
+#mt-dropdown a{ display:block; line-height:25px; text-decoration:none; }
+#mt-dropdown a:hover { display:block; line-height:25px; color:#D96708; }
+#mt-dropdown span { display:block; cursor:pointer; white-space:nowrap;
+text-transform:none; }
+#mt-dropdown li ul span {white-space:normal; }
+
+/************ 0 LEVEL  ***************/
+#mt-dropdown li {border-bottom:1px dotted #d8d8d8; }
+#mt-dropdown li.active a { color:#D96708;  }
+#mt-dropdown li.active li a{text-decoration:none;}
+#mt-dropdown li.active li a:hover{color:#D96708;}
+#mt-dropdown a {  padding:0 15px 0px 15px; color:#000; font-weight:normal; }
+#mt-dropdown li.over a{color:#D96708;};
+#mt-dropdown a:hover { color:#D96708; }
+
+/************ 1ST LEVEL ************/
+#mt-dropdown ul li,
+#mt-dropdown ul li.active { float:left; margin:0; }
+#mt-dropdown ul li.last { background:#fff; padding-bottom:0; }
+
+#mt-dropdown ul a,
+#mt-dropdown ul li a:hover { float:left; padding:0; background:fff; color:#D96708; }
+#mt-dropdown ul li a { font-weight:normal !important;}
+#mt-dropdown ul{background:#FFF !important;}
+
+/************ 2ND LEVEL ************/
+#mt-dropdown ul { position:absolute; width:170px; top:25px; left:-10000px; border:1px solid #d8d8d8;  }
+
+/* Show menu */
+#mt-dropdown li.over > ul { left:120px;top:-1px; }
+#mt-dropdown li.over > ul li.over > ul { left:120px; }
+#mt-dropdown li.over ul ul { left:-10000px; }
+
+#mt-dropdown ul li a { background:#fff; }
+#mt-dropdown ul li a:hover { background:#fff;color:#D96708 !important; }
+#mt-dropdown ul li a{ color:#000 !important; }
+#mt-dropdown ul span, #mt-dropdown ul li.last li span { padding:0px 15px 0px 15px;}
+#mt-dropdown li.last{border:none !important;}
+/************ 3RD+ LEVEL ************/
+#mt-dropdown ul ul { background:#fff; }
+#mt-dropdown ul li{}

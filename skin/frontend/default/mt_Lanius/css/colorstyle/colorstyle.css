@@ -1,0 +1,282 @@
+#panel {
+	background-color: #FFFFFF;
+    border: 1px solid #E1E1E1;
+    color: #6B6B6B;
+    left: -393px;
+    position: fixed;
+    top: 110px;
+    width: 391px;
+    z-index: 1000;
+	font-size:90%;
+}
+ul.listpanel {
+	width: 100%;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+	list-style:none;
+}
+ul.listpanel li{
+	width:100%;
+	float: left;
+	padding: 2px 0;
+}
+.mainheader {
+    background-color: #F5F5F5;
+    color: #1D1C1B; 
+    font-size: 15px;
+    font-weight: 400;
+    line-height: 15px;
+    padding: 16px 0;
+    text-align: center;
+    text-transform: uppercase; 
+} 
+.btn-slide { 
+    background: url("images/bg_stoggle.png") no-repeat scroll 0 0 transparent;
+    border-color: #E1E1E1 #E1E1E1 #E1E1E1 -moz-use-text-color;
+    border-style: solid solid solid none;
+    border-width: 1px 1px 1px medium; 
+    display: block;
+    float: right;
+    height: 178px;
+    margin: 20px -39px 0 0;
+    width: 38px;
+    text-indent: -9999px; 
+    cursor: pointer;
+}
+.btn-slide.active {
+    background-position: -38px 0;
+}
+#panel fieldset {
+    padding: 23px 19px 19px;
+}
+#panel p.border {
+    border-top: 1px solid #D8D8D8;
+} 
+#panel p {
+    padding: 0px;
+    text-align: left;
+    width: 100%;
+    float: left;
+    margin: 0px;
+    font-weight: bold;
+}
+#panel p.border span {
+    background: none repeat scroll 0 0 #FFFFFF;
+    float: left;
+    margin: -10px 0 0 -10px;
+    padding: 0 10px;
+}
+#panel span.mttitle { 
+    padding: 0px;
+    text-align: left;
+    width: 100%;
+    float: left;
+    margin: 0px;
+    font-weight: bold;
+	border-top: 1px solid #D8D8D8;
+	cursor: pointer;
+	padding: 6px 0 0;
+}
+#panel span.mttitle span.arrows {
+	background: url(images/collapse.png) no-repeat left top;
+	width: 16px;
+	height: 13px;
+	float: right;
+}
+#panel span.mttitle span.current {
+	background: url(images/expand.png) no-repeat left top;
+	width: 16px;
+	height: 13px;
+	float: right;
+}
+ul.scolors {
+    list-style: none outside none;
+    margin: 11px 0 18px;
+    overflow: hidden;
+    padding: 0;
+    width: 100%;
+    float: left;
+}
+ul.scolors li {
+    float: left;
+    margin: 0 3px 3px 0;
+}
+ul.scolors li a.brown {
+    background: none repeat scroll 0 0 #695140;
+}
+ul.scolors li a.blue {
+    background: none repeat scroll 0 0 #6d999e;
+}
+
+ul.scolors li a {
+    cursor: pointer;
+    display: block;
+    height: 28px;
+    width: 37px;
+}
+.mainsetting {
+	width: 100%;
+	float: left;
+	display: block;
+}
+.bakcolor {
+    width: 106px;
+    float: left;
+    padding: 0 10px 0 0;
+    text-align: left;
+    height: 52px;
+}
+.textcolor {
+    width: 106px;
+    float: left;
+    padding: 0 10px 0 0;
+    text-align: left;
+    height: 52px;
+} 
+.linkcolor {
+    width: 106px;
+    float: left;
+    padding: 0 10px 0 0;
+    text-align: left;
+    height: 52px;
+}
+#panel input {
+    border: #e1e1e1 solid 1px;
+    height: 17px;
+    color: #333;
+}
+#mColorPicker {
+    z-index: 1030;
+}
+.mColorPickerTrigger {position: relative;right: -93px;top: -32px;}
+.btn-reset, .btn-apply {
+    width: 50%;
+    float: left;
+    padding: 0 0 10px 0;
+}
+.btn-reset button.btreset {
+    background: url("images/reset.png") no-repeat scroll 0 4px transparent;
+    border: 0 none;
+    color: #211E1B;
+    font-style: italic;
+    font-weight: 700;
+    padding-left: 15px;
+    width: 55px;
+    cursor: pointer;
+} 
+.btn-apply button.button span {
+    background: none repeat scroll 0 0 #9dce67;
+    color: #FFFFFF;
+    float: left; 
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 18px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+.btn-reset button.btreset span {
+   background: none repeat scroll 0 0 #CD1507;
+   color: #FFFFFF;
+    float: left; 
+    font-size: 14px;
+    font-style: normal;
+    font-weight: 400;
+    height: 35px;
+    line-height: 35px;
+    padding: 0 18px;
+    text-align: center;
+    text-transform: uppercase;
+    white-space: nowrap;
+   }
+.btn-apply button.button:hover span ,.btn-reset button.btreset:hover span  {background:#dcdcdc;}
+
+.mainbody {
+    float: left;
+    padding: 0px;
+    width: 100%;
+}
+.mainpattern {
+    text-align: left;
+    width: 100%;
+    float: left;
+	display: none;
+}
+.background {
+    display: inline-block;
+    width: 100%;
+    padding-top: 2px;
+    text-align: left;
+}
+.pattern-active {
+    border: 1px solid #D7D7D8;
+    cursor: pointer;
+    display: block;
+    height: 24px;
+    width: 70px;
+}
+
+.mt-pattern {
+	display: inline-block;
+    float: left;
+    padding: 3px 0;
+}
+
+.pattern-active {
+    border: 1px solid #D7D7D8;
+    cursor: pointer;
+    display: block;
+    height: 24px;
+    width: 70px;
+	text-align:center;
+}
+.pattern-active img {
+	height: 24px;
+    width: 70px;
+} 
+.mt-pattern {
+	display: inline-block;
+    float: left;
+    padding: 3px 0;
+}
+.pattern-popup {
+	float: left; 
+	width: 100%;
+	overflow: hidden;
+	position: relative;
+}
+.pattern-popup .item {
+    border: 1px solid #E1E1E1;
+    cursor: pointer;
+    float: left;
+    height: 29px;
+    margin-right: 4px;
+    margin-top: 10px;
+    width: 29px;
+}
+.pattern-popup .item img {
+	height: 29px;
+	width: 29px;
+}
+.pattern-popup .none {
+	font-size: 10px;
+    line-height: 24px;
+    text-align: center;
+    text-indent: -1px;
+}
+#h_font {
+	width: 100px;
+	height: 24px;
+}
+#b_font {
+	width: 100px;
+	height: 24px;
+}
+#m_font {
+	width: 100px;
+	height: 24px;
+}

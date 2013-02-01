@@ -1,0 +1,90 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<layout version="0.1.0">
+    <default>
+        <reference name="head">
+            <action method="addJs"><script>magenthemes/megamenu/jquery/1.7.1/jquery.min.js</script></action>
+            <action method="addJs"><script>magenthemes/megamenu/jquery.simple.tree.js</script></action>
+            <action method="addCss"><stylesheet>magenthemes/megamenu/css/tree.css</stylesheet></action>
+        </reference>
+        <block type="megamenu/adminhtml_megamenu_new_form" name="megamenu.type" as="megamenu.type">
+            <action method="addNode"><name>static_block</name><title>Static Block</title><model>cms/block</model><title_field>title</title_field><parent>internal_link</parent></action>
+            <action method="addNode"><name>cms_page</name><title>CMS Page</title><model>cms/page</model><title_field>title</title_field><parent>internal_link</parent></action>
+            <action method="addNode"><name>category</name><title>Category</title><model>catalog/category</model><title_field>name</title_field><parent>internal_link</parent></action>
+        </block>
+    </default>
+    <megamenu_adminhtml_megamenu_edit>
+    	<!--<update handle="editor"/>-->
+        <reference name="left">
+            <block name="megamenu.tree" type="megamenu/adminhtml_megamenu_tree" template="megamenu/megamenu/tree.phtml" />
+        </reference>
+        <reference name="content">
+            <block name="megamenu.edit"  type="megamenu/adminhtml_megamenu_edit" template="megamenu/megamenu/edit.phtml" />
+        </reference>
+        <!--<reference name="js">
+            <block type="core/template" template="catalog/wysiwyg/js.phtml" name="catalog.wysiwyg.js" />
+        </reference>-->
+    </megamenu_adminhtml_megamenu_edit>
+    <!--<megamenu_adminhtml_megamenu_index>
+        <reference name="content">
+            <block type="megamenu/adminhtml_megamenu" name="megamenu" />
+        </reference>
+    </megamenu_adminhtml_megamenu_index>
+    <megamenu_adminhtml_megamenu_groups>
+        <block type="core/text_list" name="root">
+            <block type="megamenu/adminhtml_megamenu_edit_tab_group" name="megamenu.group.grid"/>
+            <block type="adminhtml/widget_grid_serializer" name="related_grid_serializer">
+                <reference name="related_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>megamenu.group.grid</grid_block_name>
+                        <data_callback>getSelectedGroup</data_callback>
+                        <hidden_input_name>groups</hidden_input_name>
+                        <reload_param_name>group_id</reload_param_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </megamenu_adminhtml_megamenu_groups>
+    <megamenu_adminhtml_megamenu_groupsgrid>
+        <block type="core/text_list" name="root">
+            <block type="megamenu/adminhtml_megamenu_edit_tab_group" name="megamenu.group.grid"/>
+        </block>
+    </megamenu_adminhtml_megamenu_groupsgrid>-->
+    <!--Group-->
+    <!--<megamenu_adminhtml_group_index>
+        <reference name="content">
+            <block type="megamenu/adminhtml_group" name="group" />
+        </reference>
+    </megamenu_adminhtml_group_index>
+    <megamenu_adminhtml_group_megamenus>
+        <block type="core/text_list" name="root">
+            <block type="megamenu/adminhtml_group_edit_tab_megamenu" name="megamenu.group.megamenus"/>
+            <block type="adminhtml/widget_grid_serializer" name="megamenu_grid_serializer">
+                <reference name="megamenu_grid_serializer">
+                    <action method="initSerializerBlock">
+                        <grid_block_name>megamenu.group.megamenus</grid_block_name>
+                        <data_callback>getSelectedRelatedMegamenus</data_callback>
+                        <hidden_input_name>megamenus</hidden_input_name>
+                        <reload_param_name>group_megamenu</reload_param_name>
+                    </action>
+                    <action method="addColumnInputName">
+                        <input_name>sort_order</input_name>
+                    </action>
+                </reference>
+            </block>
+        </block>
+    </megamenu_adminhtml_group_megamenus>
+    <megamenu_adminhtml_group_megamenusgrid>
+        <block type="core/text_list" name="root">
+            <block type="megamenu/adminhtml_group_edit_tab_megamenu" name="megamenu.group.megamenus"/>
+        </block>
+    </megamenu_adminhtml_group_megamenusgrid>-->
+</layout>

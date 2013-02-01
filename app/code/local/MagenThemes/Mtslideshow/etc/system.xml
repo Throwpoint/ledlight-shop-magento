@@ -1,0 +1,431 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * @package MT Slideshow module for Magento 1.4.x.x, Magento 1.5.x.x and Magento 1.6.x.x
+ * @version 2.0.0
+ * @author http://www.magentheme.com
+ * @copyright (C) 2011- MagenTheme.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<config>
+    <tabs>
+	<magenthemes translate="label">
+	    <label>MagenThemes Extension</label>
+	    <sort_order>205</sort_order>
+	</magenthemes>
+    </tabs>
+    <sections>
+	<mtslideshow translate="label" module="mtslideshow">
+	    <label>MT Slideshow</label>
+	    <tab>magenthemes</tab>
+	    <sort_order>130</sort_order>
+	    <show_in_default>1</show_in_default>
+	    <show_in_website>1</show_in_website>
+	    <show_in_store>1</show_in_store>
+	    <groups>
+		<mtslideshow_config translate="label">
+		    <label>General Configuration</label>
+		    <frontend_type>text</frontend_type>
+		    <sort_order>1</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>
+		    <fields>
+			<enabled translate="label">
+			    <label>Enable</label>
+			    <frontend_type>select</frontend_type>
+			    <source_model>adminhtml/system_config_source_yesno</source_model>
+			    <sort_order>1</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>							
+			</enabled>			
+			<quality translate="label">
+			    <label>Image Quality</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>2</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <validate>required-entry validate-greater-than-zero</validate>
+			</quality>
+            <width_thumbnail translate="label">
+			    <label>Width of Thumbnail</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>3</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <validate>required-entry validate-greater-than-zero</validate>
+			</width_thumbnail>
+            <height_thumbnail translate="label">
+			    <label>Height of Thumbnail</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>4</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <validate>required-entry validate-greater-than-zero</validate>
+			</height_thumbnail>
+			<speed_show translate="label">
+			    <label>Speed Show Slider</label>
+			    <frontend_type>text</frontend_type>   
+			    <sort_order>5</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <validate>required-entry validate-greater-than-zero</validate>
+			    <comment><![CDATA[Speed show slider when page load.]]></comment>
+			</speed_show>
+		    </fields>
+		</mtslideshow_config>
+		<slider_settings translate="label">
+		    <label>Slider Settings</label>
+		    <frontend_type>text</frontend_type>
+		    <sort_order>2</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>
+		    <fields>
+				<theme translate="label">
+					<label>Theme</label>
+					<frontend_type>select</frontend_type>
+					<source_model>mtslideshow/config_mode</source_model>
+					<sort_order>1</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+				</theme>			
+				<effect_default translate="label">
+					<label>Effect</label>
+					<frontend_type>select</frontend_type>
+					<source_model>mtslideshow/config_effect</source_model>
+					<sort_order>2</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Specify sets like: 'fold, fade, sliceDown'.]]></comment>
+				</effect_default>
+				<slices_default translate="label">
+					<label>Slices</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[For slice animations.]]></comment>
+				</slices_default>			
+				<box_cols_default translate="label">
+					<label>Box Cols</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[For box animations.]]></comment>
+				</box_cols_default>
+				<box_rows_default translate="label">
+					<label>Box Rows</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>5</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[For box animations.]]></comment>
+				</box_rows_default>			
+				<anim_speed_default translate="label">
+					<label>Anim Speed</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>6</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Slide transition speed.]]></comment>
+				</anim_speed_default>
+				<anim_speed_mtscroll translate="label">
+					<label>Anim Speed</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>3</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>mtscroll</theme></depends>
+					<comment><![CDATA[Slide transition speed.]]></comment>
+				</anim_speed_mtscroll>
+				<pause_time_default translate="label">
+					<label>Pause Time</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>7</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[How long each slide will show?]]></comment>
+				</pause_time_default>
+				<pause_time_mtscroll translate="label">
+					<label>Pause Time</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>4</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>mtscroll</theme></depends>
+					<comment><![CDATA[How long each slide will show?]]></comment>
+				</pause_time_mtscroll>
+				<start_slide_default translate="label">
+					<label>Start Slide</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>8</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Set starting Slide (0 index).]]></comment>
+				</start_slide_default>
+				<direction_nav_default translate="label">
+					<label>Direction Nav</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>9</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Next & Prev navigation.]]></comment>
+				</direction_nav_default>			
+				<direction_nav_hide_default translate="label">
+					<label>Direction Nav Hide</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Only show on hover.]]></comment>
+				</direction_nav_hide_default>
+				<control_nav_default translate="label">
+					<label>Control Nav</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>11</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[1,2,3... navigation.]]></comment>
+				</control_nav_default> 
+				<control_nav_thumbs_default translate="label">
+					<label>Control Nav Thumbs</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>12</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Use thumbnails for Control Nav.]]></comment>
+				</control_nav_thumbs_default>
+				<control_nav_thumbs_from_rel_default translate="label">
+					<label>Control Nav Thumbs From Rel</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>13</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Use image rel for thumbs.]]></comment>
+				</control_nav_thumbs_from_rel_default>
+				
+				<control_item_nav_display translate="label">
+					<label>Item Nav Display</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>14</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Item nav display.]]></comment>
+				</control_item_nav_display>
+				<control_nav_width translate="label">
+					<label>Control Nav Width</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>15</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Width navigation.]]></comment>
+				</control_nav_width>
+				
+				<control_item_nav_height translate="label">
+					<label>Item Nav Height</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>16</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Item navigation height.]]></comment>
+				</control_item_nav_height>
+				
+				
+				<keyboard_nav_default translate="label">
+					<label>Keyboard Nav</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>17</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Use left & right arrows.]]></comment>
+				</keyboard_nav_default>
+				<pause_on_hover_default translate="label">
+					<label>Pause On Hover</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>18</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Stop animation while hovering.]]></comment>
+				</pause_on_hover_default>
+				<manual_advance_default translate="label">
+					<label>Manual Advance</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>19</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Force manual transitions.]]></comment>
+				</manual_advance_default>
+				<caption_opacity_default translate="label">
+					<label>Caption Opacity</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>20</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>
+					<validate>required-entry validate-not-negative-number</validate>
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Universal caption opacity.]]></comment>
+				</caption_opacity_default>
+				<prev_text_default translate="label">
+					<label>Prev Text</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>21</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Prev directionNav text.]]></comment>
+				</prev_text_default>
+				<next_text_default translate="label">
+					<label>Next Text</label>
+					<frontend_type>text</frontend_type>   
+					<sort_order>22</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Next directionNav text.]]></comment>
+				</next_text_default>
+				<random_start_default translate="label">
+					<label>Random Start</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>23</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Start on a random slide.]]></comment>
+				</random_start_default>
+				<autoplay_default translate="label">
+					<label>Autoplay</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>24</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>default</theme></depends>
+					<comment><![CDATA[Autoplay slideshow when page load.]]></comment>
+				</autoplay_default>
+				<os_start_slide translate="label">
+					<label>Start Slide</label>
+					<frontend_type>text</frontend_type>
+					<sort_order>10</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>mtosslider</theme></depends>
+					<comment><![CDATA[Item navigation height.]]></comment>
+				</os_start_slide>
+				<os_auto translate="label">
+					<label>Autoplay</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>11</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>mtosslider</theme></depends>
+					<comment><![CDATA[Autoplay slideshow when page load.]]></comment>
+				</os_auto>
+				<e_pagenav translate="label">
+					<label>Enable Pagenave</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>11</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>mtosslider</theme></depends>
+					<comment><![CDATA[Display page nave for slide.]]></comment>
+				</e_pagenav>
+				<e_scrollbar translate="label">
+					<label>Enable Scrollbar</label>
+					<frontend_type>select</frontend_type>
+					<source_model>adminhtml/system_config_source_yesno</source_model>
+					<sort_order>11</sort_order>
+					<show_in_default>1</show_in_default>
+					<show_in_website>1</show_in_website>
+					<show_in_store>1</show_in_store>			    
+					<depends><theme>mtosslider</theme></depends>
+					<comment><![CDATA[Display Scrollbar for slide.]]></comment>
+				</e_scrollbar>
+		    </fields>
+		</slider_settings>
+		<info translate="label">
+		    <label>Information</label>
+		    <frontend_type>text</frontend_type>
+		    <frontend_model>mtslideshow/info</frontend_model>
+		    <sort_order>150</sort_order>
+		    <show_in_default>1</show_in_default>
+		    <show_in_website>1</show_in_website>
+		    <show_in_store>1</show_in_store>                    
+		</info>				
+	    </groups>
+	</mtslideshow>
+    </sections>
+</config>

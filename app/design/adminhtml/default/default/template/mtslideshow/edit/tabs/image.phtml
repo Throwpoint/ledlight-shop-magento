@@ -1,0 +1,66 @@
+<?php
+/******************************************************
+ * @package MT Slideshow module for Magento 1.4.x.x, Magento 1.5.x.x and Magento 1.6.x.x
+ * @version 2.0.0
+ * @author http://www.magentheme.com
+ * @copyright (C) 2011- MagenTheme.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php $_block = $this; ?>
+<div id="<?php echo $_block->getHtmlId() ?>" >
+    <div class="grid">
+        <table cellspacing="0" class="data border" id="<?php echo $_block->getHtmlId() ?>_grid_mtslideshow" width="100%">
+            <col width="120" />
+            <col width="260" />
+            <col width="260" />
+            <col width="160" />           
+            <col width="50" />
+            <col width="50" />
+            <thead>
+                <tr class="headings">
+                    <th><?php echo Mage::helper('mtslideshow')->__('Image') ?></th>
+                    <th><?php echo Mage::helper('mtslideshow')->__('Link') ?></th>                    
+                    <th><?php echo Mage::helper('mtslideshow')->__('Title') ?></th>
+                    <th><?php echo Mage::helper('mtslideshow')->__('Description') ?></th>
+                    <th><?php echo Mage::helper('mtslideshow')->__('Disable') ?></th>
+                    <th class="last"><?php echo Mage::helper('mtslideshow')->__('Remove') ?></th>
+                </tr>
+            </thead>
+            <tbody id="<?php echo $_block->getHtmlId() ?>_list">
+                <tr id="<?php echo $_block->getHtmlId() ?>_template" class="template no-display">
+                    <td class="cell-image"><div class="place-holder" onmouseover="<?php echo $_block->getJsObjectName(); ?>.loadImage('__file__')"><span><?php echo Mage::helper('mtslideshow')->__('Roll Over for preview') ?></span></div><img src="<?php echo $this->getSkinUrl('images/spacer.gif')?>" width="100" style="display:none;" alt="" /></td>
+                    <td class="cell-link a-center"><input type="text" class="input-text" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>                    
+                    <td class="cell-title a-center"><input type="text" class="input-text" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+                    <td class="cell-description a-center"><textarea style="width:95%" class="input-text" onkeyup="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" onchange="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')"></textarea></td>
+                    <td class="cell-disable a-center"><input type="checkbox" onclick="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+                    <td class="cell-remove a-center last"><input type="checkbox" onclick="<?php echo $_block->getJsObjectName(); ?>.updateImage('__file__')" /></td>
+                </tr>
+
+                <tr id="<?php echo $_block->getHtmlId() ?>-image-0">
+                    <td class="cell-image"><?php echo Mage::helper('catalog')->__('No image') ?></td>
+                    <td class="cell-link"><input type="hidden" />&nbsp;</td>                    
+                    <td class="cell-title"><input type="hidden" />&nbsp;</td>
+                    <td class="cell-description"><input type="hidden" />&nbsp;</td>              
+                    <td class="cell-disable"><input type="hidden" />&nbsp;</td>
+                    <td class="cell-remove"><input type="hidden" />&nbsp;</td>
+                </tr>
+            </tbody>
+            <tfoot>
+                <tr>
+                    <td colspan="100" class="last" style="padding:8px">
+                        <?php echo $_block->getUploaderHtml() ?>
+                    </td>
+                </tr>
+            </tfoot>
+        </table>
+    </div>
+</div>
+<input type="hidden" id="<?php echo $_block->getHtmlId() ?>_save" name="images" value="<?php echo $_block->htmlEscape($_block->getImagesJson()) ?>" />
+<input type="hidden" id="smece_save" name="[smece]" value="smece" />
+<input type="hidden" id="<?php echo $_block->getHtmlId() ?>_save_image" name="[values]" value="<?php echo $_block->htmlEscape($_block->getImagesValuesJson()) ?>" />
+<script type="text/javascript">
+    //<![CDATA[
+    var <?php echo $_block->getJsObjectName(); ?> = new SlideShow.Gallery('<?php echo $_block->getHtmlId() ?>', <?php echo $_block->getUploader()->getJsObjectName() ?>, <?php echo $_block->getImageTypesJson() ?>);
+    //]]>
+</script>

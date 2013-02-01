@@ -1,0 +1,28 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<div class="categories-side-col">
+    <div class="content-header">
+        <h3 class="icon-head head-categories"><?php echo Mage::helper('catalog')->__('Megamenus') ?></h3>
+	<?php echo $this->getImportCategoriesButtonHtml() ?><br />
+	<?php echo $this->getAddRootButtonHtml() ?><br />
+	<?php echo $this->getAddSubButtonHtml() ?>
+    </div>
+    <?php echo $this->getStoreSwitcherHtml();?>
+    <div class="tree-actions">
+        <?php if(count($this->getRoot())): ?>
+            <a href="#" onclick="console.log(simpleTreeCollection); return false;"><?php echo Mage::helper('megamenu')->__('Collapse All'); ?></a> <span class="separator">|</span> <a href="#" onclick="tree.expandTree(); return false;"><?php echo Mage::helper('megamenu')->__('Expand All'); ?></a>
+        <?php endif; ?>
+    </div>
+    <div class="tree-holder">
+        <div style="width:100%; overflow:auto;" id="tree-container">
+	    <?php echo $this->getTreeHtml(); ?>
+        </div>
+    </div>
+</div>

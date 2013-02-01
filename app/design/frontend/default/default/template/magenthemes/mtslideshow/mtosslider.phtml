@@ -1,0 +1,110 @@
+<?php
+/******************************************************
+ * @package MT SlideShow module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.1.1
+ * @author http://www.magentheme.com
+ * @copyright (C) 2011- MagenTheme.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php if(Mage::helper('mtslideshow')->isActive()) : ?>
+	<?php
+		$slide = $this->getDataSlide();
+		$path = Mage::getBaseUrl('media');
+		$w = $slide->getWidth();
+		$h = $slide->getHeight(); 
+	?> 
+	<div class="mt_ios-slider-wrapper container">
+		<div class="mt_iosslider slider-wrapper loading">
+			<div class="slider" style="visibility: hidden;">
+				<?php foreach($slide->getImageList() as $s): ?>
+				<?php $imag = $s['file']; ?>
+				<div class="item"> 
+					<a href="<?php echo $s['link']; ?>"><img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'js/magenthemes/mtslideshow/timthumb/timthumb.php?src='.$this->helper('mtslideshow/image')->init($s['file']).'&amp;h='.$h.'&amp;w='.$w ?>" title="<?php echo $s['title']; ?>" /></a>
+					<div class="title visible-desktop"><span><?php echo $s['title']; ?></span></div> 
+					<div class="description visible-desktop"><span><?php echo $s['description']; ?></span></div> 
+				</div>
+				<?php endforeach; ?> 
+			</div>
+			<?php if(Mage::helper('mtslideshow')->isOsPagenavDefault()>0){?>
+			<div class="mt_iosPagenav">
+				<?php foreach($slide->getImageList() as $s): ?>
+				<div class="button"></div>
+				<?php endforeach; ?> 
+			</div>
+			<?php }?> 
+		</div> 
+		<div class="prevButton visible-desktop"></div> 
+		<div class="nextButton visible-desktop"></div>
+	</div> 
+	<?php if(count($slide->getImageList()) > 1) :?>
+	<script type="text/javascript">
+		$jq(window).load(function() {
+			$jq('.mt_iosslider').removeClass('loading');
+			$jq('.slider').css({'visibility':'visible'});
+			$jq('.mt_iosslider').iosSlider({ 
+				<?php if(Mage::helper('mtslideshow')->isOsScrollbarDefault()>0){?>
+				scrollbar: true,
+				<?php }else{?>
+				scrollbar: false,
+				<?php }?>
+				snapToChildren: true,
+				desktopClickDrag: true, 
+				responsiveSlideWidth: true,
+				infiniteSlider: false,
+				<?php if(Mage::helper('mtslideshow')->isOsAutoplayDefault()>0){?>
+				autoSlide: true,
+				<?php }else{?>
+				autoSlide: false,
+				<?php }?> 
+				startAtSlide: '<?php echo Mage::helper('mtslideshow')->isOsStartSlideDefault() ?>',
+				navSlideSelector: $jq('.mt_iosPagenav .button'),
+				navPrevSelector: $jq('.prevButton'),
+				navNextSelector: $jq('.nextButton'),
+				<?php if(Mage::helper('mtslideshow')->isOsPagenavDefault()>0){?>
+				onSlideChange: slideContentChange,
+				<?php }?> 
+				onSlideComplete: slideContentComplete,
+				onSliderLoaded: slideContentLoaded
+			});  
+			function slideContentComplete(args) { 
+				/* animation */ 
+				$jq(args.sliderObject).find('.title, .description').attr('style', '');  
+				$jq(args.currentSlideObject).children('.title').animate({
+					left: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+				$jq(args.currentSlideObject).children('.description').delay(200).animate({
+					left: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+			} 
+			function slideContentLoaded(args) { 
+				/* animation */
+				$jq(args.sliderObject).find('.title, .description').attr('style', ''); 
+				$jq(args.currentSlideObject).children('.title').animate({
+					left: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint'); 
+				$jq(args.currentSlideObject).children('.description').delay(200).animate({
+					left: '50px',
+					opacity: '1'
+				}, 400, 'easeOutQuint');
+				<?php if(Mage::helper('mtslideshow')->isOsPagenavDefault()>0){?>
+				/* indicator */
+				$jq(args.sliderObject).parent().find('.mt_iosPagenav .button').removeClass('selected');
+				$jq(args.sliderObject).parent().find('.mt_iosPagenav .button:eq(' + args.currentSlideNumber + ')').addClass('selected');
+				<?php }?> 
+			}
+			<?php if(Mage::helper('mtslideshow')->isOsPagenavDefault()>0){?>
+			function slideContentChange(args) { 
+				/* indicator */
+				$jq(args.sliderObject).parent().find('.mt_iosPagenav .button').removeClass('selected');
+				$jq(args.sliderObject).parent().find('.mt_iosPagenav .button:eq(' + args.currentSlideNumber + ')').addClass('selected');
+				
+			}
+			<?php }?> 
+		}); 
+	</script>
+	<?php endif; ?> 
+<?php endif; ?>

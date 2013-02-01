@@ -1,0 +1,61 @@
+.mt-more-images
+    {
+        position:relative;
+    }
+/* horizontal slide*/
+.product-view .next, .product-view .prev
+    {
+        cursor: pointer;
+        position:absolute;
+        z-index:90;
+        background-image:url(../../images/thumbnailscroller/hor_ctr.png);
+        width:11px;
+        height:17px;
+		-moz-transition: all 0.3s linear 0s;
+		-o-transition:all 0.3s linear 0s;
+		-webkit-transition: all 0.3s linear 0s;
+		top:44px !important;
+    }
+.product-view .next
+    {
+        background-position:100% 0;
+        right:0px;
+    }
+.product-view .next:hover{background-position:100% -17px;}	
+.product-view .prev
+    {
+        left:0px;
+        background-position:0 0;
+    }
+.product-view .prev:hover{background-position:0 -17px;}	
+/* vertical slide */
+.product-view .mt-vert-thumb .next, .product-view .mt-vert-thumb .prev
+    {
+        background-image:url(../../images/thumbnailscroller/vert_ctr.png);
+        width:40px;
+        height:14px;
+        /*left:11px;*/
+    }
+.product-view .mt-vert-thumb .next
+    {
+        background-position:0 100%;
+        /*top:296px;*/
+    }
+.product-view .mt-vert-thumb .prev
+    {
+        background-position:0 0;
+        top:-5px;       
+    }
+.product-view .product-img-box .more-views li
+    {
+        display:block !important;
+        float:left !important;
+		
+    }
+.product-view .product-img-box .more-views li a{
+    
+   }	
+.mt-image-zoom
+    {
+        
+    }

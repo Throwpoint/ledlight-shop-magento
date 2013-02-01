@@ -1,0 +1,69 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<script type="text/javascript">
+    var Tree_MT_Menu = Class.create();
+    Tree_MT_Menu.prototype = {
+        initialize: function() {
+            Event.observe(window, 'click',
+                function(event) {
+                    if(event.findElement('img.x-tree-ec-icon') != undefined && (event.findElement('img.x-tree-ec-icon').hasClassName('x-tree-elbow-plus') || event.findElement('img.x-tree-ec-icon').hasClassName('x-tree-elbow-minus'))) {
+                        if(event.findElement('div.x-tree-node-el').next().style.display == 'none') {
+                            event.findElement('div.x-tree-node-el').removeClassName('x-tree-node-collapsed');
+                            event.findElement('div.x-tree-node-el').addClassName('x-tree-node-expanded');
+                            event.findElement('img.x-tree-ec-icon').removeClassName('x-tree-elbow-plus');
+                            event.findElement('img.x-tree-ec-icon').addClassName('x-tree-elbow-minus');
+                            event.findElement('div.x-tree-node-el').next().show();
+                        } else {
+                            event.findElement('div.x-tree-node-el').removeClassName('x-tree-node-expanded');
+                            event.findElement('div.x-tree-node-el').addClassName('x-tree-node-collapsed');
+                            event.findElement('img.x-tree-ec-icon').removeClassName('x-tree-elbow-minus');
+                            event.findElement('img.x-tree-ec-icon').addClassName('x-tree-elbow-plus');
+                            event.findElement('div.x-tree-node-el').next().hide();
+                        }
+                    }
+                }
+            );
+        }
+    }
+</script>
+<div class="entry-edit">
+    <fieldset id="grop_fields">
+        <div class="tree">
+            <?php if($this->getRootNodes()): ?>
+            <ul class="x-tree-root-ct x-tree-lines">
+                <?php $i=0; ?>
+                <?php foreach($this->getRootNodes() as $rootNode): ?>
+                <?php $i++; ?>
+                <li class="x-tree-node">
+                    <div class="x-tree-node-el <?php if(!count($this->getChildNodes($rootNode->getName()))): ?>x-tree-node-leaf<?php else: ?>x-tree-node-collapsed<?php endif; ?>">
+                        <img id="ext-gen-<?php echo $rootNode->getName() ?>" class="x-tree-ec-icon <?php if(count($this->getChildNodes($rootNode->getName()))): ?><?php if($i==count($this->getRootNodes())): ?>x-tree-elbow-end-plus<?php else: ?>x-tree-elbow-plus<?php endif; ?><?php elseif($i==count($this->getRootNodes())): ?>x-tree-elbow-end<?php else: ?>x-tree-elbow<?php endif; ?>" src="<?php echo $this->getJsUrl().'spacer.gif' ?>" />
+                        <?php if(!count($this->getChildNodes($rootNode->getName()))): ?>
+                        <a href="<?php echo $this->getUrl('*/*/*', array('type' => $rootNode->getName())) ?>">
+                            <span><?php echo $rootNode->getTitle() ?></span>
+                        </a>
+                        <?php else: ?>
+                        <span><?php echo $rootNode->getTitle() ?></span>
+                        <?php endif; ?>
+                    </div>
+                    <?php if(count($this->getChildNodes($rootNode->getName()))): ?>
+                    <ul class="x-tree-node-ct" id="<?php echo $rootNode->getName() ?>" style="display:none;">
+                        <?php echo $this->getChildNodeHtml($rootNode->getName()) ?>
+                    </ul>
+                    <?php endif; ?>
+                </li>
+                <?php endforeach; ?>
+            </ul>
+            <?php endif; ?>
+        </div>
+    </fieldset>
+</div>
+<script type="text/javascript">
+    var treeMTMenu = new Tree_MT_Menu();
+</script>

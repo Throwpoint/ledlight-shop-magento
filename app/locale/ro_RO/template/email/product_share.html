@@ -1,0 +1,34 @@
+{* This is a comment block
+
+Variabile disponibile pentru acest template:
+  - name            Numele destinatarului
+  - email           Adresa de email a destinatarului
+  - product_name    Numele produslui
+  - product_url     Url produsu
+  - product_image   Url pentru imaginea mica (75 px) a produslui
+  - message         Mesajul personalizat al expeditorului
+  - sender_name     Numele expeditorului
+  - sender_email    Emailul expeditorului
+
+Utilizati urmatoarea variabila: {{var var_name}}
+*}<!--@subject Salutare, {{var name}} @-->
+<!--@vars
+{"htmlescape var=$name":"Recipient Name",
+"var product_url":"Url pentru Produs",
+"var product_name":"Nume produs",
+"var message":"Sender Message",
+"var sender_name":"Sender name",
+"var store.getFrontendName":"Nume Website ",
+"store url=""":"Adresa site-ului"}
+@-->
+
+Salutare, {{htmlescape var=$name}}<br />
+<br />
+Acesta este un email trimis de <strong>{{var sender_name}}</strong> prin intermediul site-ului <a href="{{store url=""}}" style="color:#1E7EC8;"><strong>{{var store.getFrontendName()}}</strong><br /></a>
+<br />
+{{var sender_name}} iti recomanda <a href="{{var product_url}}">{{var product_name}}</a>
+<img src="{{var product_image}}" alt="{{var product_url}}"/>
+<br />
+<br />
+Aici este mesajul scris de {{htmlescape var=$name}}: <br />
+{{var message}}<br /><br />

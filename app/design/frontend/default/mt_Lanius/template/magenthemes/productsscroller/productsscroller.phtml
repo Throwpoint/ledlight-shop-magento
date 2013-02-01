@@ -1,0 +1,186 @@
+<?php 
+/*------------------------------------------------------------------------
+# APL Solutions and Vision Co., LTD
+# ------------------------------------------------------------------------
+# Copyright (C) 2008-2011 APL Solutions and Vision Co., LTD. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: APL Solutions and Vision Co., LTD
+# Websites: http://www.joomlavision.com/ - http://www.9magentothemes.com/
+-------------------------------------------------------------------------*/
+$otherconfig = Mage::getStoreConfig('mtlaniusadmin/otherconfig'); 
+?>
+<?php $_helper = $this->helper('catalog/output'); ?>
+<?php if($this->getConfig('enabled')): ?> <!-- start enable module -->
+<?php
+//width, height of slider
+$item = $this->getConfig('items');
+// width, height of thumbnail
+$w = $this->getConfig('width');
+$h = $this->getConfig('height');
+$mainWidth = $this->getConfig('main_width');
+$mainHeight = $this->getConfig('main_height');
+$pagenavWidth = $item*$this->getConfig('width_item');
+$wslider = $w * $item;
+$hslider = $h;
+$this->getListProducts();
+$_productCollection=$this->getProductCollection()
+?>
+<div class="mt_productscroller">
+	<?php if($this->getConfig('title')){?>
+	<div class="mt-proslider-title">
+		<h2><?php echo $this->getConfig('title')?></h2>
+	</div>
+	<?php }?>
+	<div id="mt_productscroller" class="scroller-slider" style="width: <?php echo $mainWidth;?>px; height: <?php echo $mainHeight;?>px;">
+		<ul style="margin: 0pt; padding: 0pt; position: relative; list-style-type: none; z-index: 1;">
+			<?php $i = 0; foreach ($_productCollection as $_product): ?>
+			<li class="items-slider loading" style="overflow: hidden; float: left; width: <?php echo $this->getConfig('width_item');?>px; height: <?php echo $mainHeight;?>px;"> 
+				<div class="catpanel "> 
+					<div class="block">
+						<?php if($this->getConfig('use_fancybox')): ?>
+						<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+						<?php endif; ?>
+						<a href="<?php echo $_product->getProductUrl() ?>" class="product-image" style="position: relative; display: block;">
+							<div id="<?php echo $_product->getId();?>">
+							<img src="<?php echo Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB).'js/magenthemes/mt_lanius/js/productsscroller/timthumb/timthumb.php?src='.$this->helper('catalog/image')->init($_product, 'small_image').'&amp;h='.$h.' &amp;w='.$w; ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+							</div>
+						</a> 
+						<?php if($this->getConfig('use_fancybox')): ?>
+						<?php if($this->getConfig('show_tooltip')): ?>
+						<a class="zoom-image" href="#inline<?php echo $_product->getId() ?>" rel="popup-fancybox"></a>
+						<?php endif; ?>
+						<?php endif; ?>
+						<?php if($this->getConfig('use_fancybox')): ?>
+						<div class="ic_caption">
+						<?php else: ?>
+						<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+						<?php endif; ?>
+						<?php if ( $this->getConfig('review') ): ?>
+						<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+						<?php endif; ?>
+						<?php if($this->getConfig('price')): ?>
+						<?php echo $this->getPriceHtml($_product, true) ?>
+						<?php endif; ?> 
+						<?php if($otherconfig['enabled_ajax']){?> 
+						<?php if($_product->isSaleable()): ?>
+							<?php if ( !($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ) { ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="ajaxaddcart('<?php echo $this->getAddToCartUrl($_product) ?>',<?php echo $_product->getId() ?>)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<?php } else { ?>
+							<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+							<a href='<?php echo $this->getUrl('mtlaniusadmin/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Add</a>
+							<?php }?>
+						<?php else: ?>
+							<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+						<?php endif; ?>
+						<?php if ($this->getConfig('detail') ):?>
+							<button type="button" title="<?php echo $this->__('Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Detail') ?></span></span></button>
+						<?php endif; ?> 
+						<?php }else{?> 
+							<?php if($_product->isSaleable()): ?>
+								<p><button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button></p>
+							<?php else: ?>
+								<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+							<?php endif; ?>
+							<?php if ($this->getConfig('detail') ):?>
+							<button type="button" title="<?php echo $this->__('Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Detail') ?></span></span></button>
+							<?php endif; ?> 
+						<?php }?> 
+						<?php if($this->getConfig('use_fancybox')): ?>
+						</div>
+						<?php endif; ?>
+					</div>  
+				</div> 							
+			</li>
+			<?php $i++;endforeach ?>
+		</ul>  
+	</div>
+	<div class="pagenave" style="width:<?php echo $pagenavWidth;?>px;top:<?php echo ($mainHeight/2)-10 ?>px;">
+		<button id="prev" class="prev"></button>
+		<button id="next" class="next"></button>
+	</div>
+	<?php if($this->getConfig('use_fancybox')): ?>
+	<div style="display:none;">
+	<?php foreach ($_productCollection as $_product): ?>
+		<div id="inline<?php echo $_product->getId() ?>" class="fancybox-inline">
+		<h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><?php echo $this->htmlEscape($_product->getName()) ?></a></h2>
+		<a href="<?php echo $_product->getProductUrl() ?>" class="product-image">
+			<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($this->getConfig('tooltip_width'), $this->getConfig('tooltip_height')); ?>" width="<?php echo $this->getConfig('tooltip_width') ?>" height="<?php echo $this->getConfig('tooltip_height')?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+		</a>
+		<div class="ic_caption">
+		<?php if ($this->getConfig('tooltip_shortdescription')): ?>
+			<div class="short-description">
+			<?php echo $_helper->productAttribute($_product, nl2br($_product->getShortDescription()), 'short_description') ?>
+			</div>
+		<?php endif; ?>
+		<?php if ( $this->getConfig('tooltip_review') ): ?>
+			<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+		<?php endif; ?>
+		<?php if($this->getConfig('tooltip_price')): ?>
+			<?php echo $this->getPriceHtml($_product, true) ?>
+		<?php endif; ?>
+		<?php if ($this->getConfig('tooltip_addtocart') ):?>
+			<div class="mt-slider-actions">			                	
+			<?php if($_product->isSaleable()): ?>
+				<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="setLocation('<?php echo $this->getAddToCartUrl($_product) ?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+			<?php else: ?>
+				<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+			<?php endif; ?>			                    
+			</div>
+		<?php endif; ?>
+		</div>
+		</div>
+	<?php endforeach; ?>
+	</div>
+	<?php endif; ?>
+</div>
+<script type="text/javascript">
+$mtkb(document).ready(function(){
+	var w = $mtkb(".container").width();
+    var mainw = $mtkb(".scroller-slider").width();
+    var navresize = function(){
+    	w = $mtkb(".container").width(); 
+    	if(w <= mainw){
+    		$mtkb(".pagenave").css("width", w-80);
+        	$mtkb(".scroller-slider").css("width", w-80);
+    	}else{
+    		$mtkb(".pagenave").css("width", mainw);
+        	$mtkb(".scroller-slider").css("width", mainw);
+    	}
+    }
+    navresize();
+    $mtkb(window).resize(function(){
+    	 navresize();
+    });
+});
+$mtkb(window).bind('load', function($) {
+	<?php if($this->getConfig('use_fancybox')): ?>
+		<?php if($this->getConfig('show_tooltip')): ?>
+			$mtkb(".zoom-image").css({ 'left': '<?php echo ($w-41)/2 ?>px', 'top': '<?php echo ($h-39)/2 ?>px' });
+			$mtkb("a[rel=popup-fancybox]").fancybox({
+			'transitionIn'		: 'none',
+			'transitionOut'		: 'none',
+			}); 
+		<?php endif; ?> 
+	<?php endif; ?>
+});
+$mtkb(window).bind('load', function($) {
+	$mtkb(function() {
+		$mtkb("#mt_productscroller").jCarouselLite({ 
+			btnNext: "#next",
+			btnPrev: "#prev",  
+			visible: <?php echo $item;?>, 
+			auto: <?php echo $this->getConfig('auto') ?>,  
+			scroll: <?php echo $this->getConfig('items_scroll') ?>,
+			easing: "swing",
+			speed: <?php echo $this->getConfig('animation') ?>,
+			fancybox: <?php echo $this->getConfig('use_fancybox');?>,
+			caption_color	: 'black',
+			caption_bgcolor	: '#D6DEE2',
+			overlay_bgcolor 	: '',
+			border		: '',
+			showcaption	: false
+		});
+	}); 
+});
+</script>
+<?php endif; ?> 

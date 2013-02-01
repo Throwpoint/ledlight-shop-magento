@@ -1,0 +1,223 @@
+<?php 
+/*------------------------------------------------------------------------
+# APL Solutions and Vision Co., LTD
+# ------------------------------------------------------------------------
+# Copyright (C) 2008-2010 APL Solutions and Vision Co., LTD. All Rights Reserved.
+# @license - Copyrighted Commercial Software
+# Author: APL Solutions and Vision Co., LTD
+# Websites: http://www.joomlavision.com/ - http://www.magentheme.com/
+-------------------------------------------------------------------------*/ 
+$_catalog = $this->getListCategory();  
+?>
+<?php $this->getListProducts() ?>
+<?php $_productCollection=$this->getProductCollection() ?>
+<?php $_collectionSize = $_productCollection->count() ?>  
+<?php if($_collectionSize>0){?>
+<!--[if lt IE 9]><script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+<script src="<?php echo $this->getUrl('').'js/magenthemes/mt_lanius/js/jquery.isotope.js'; ?>"></script>
+<script type="text/javascript">
+	var $9magen = jQuery.noConflict();
+	$9magen(window).load(function(){
+		var $container = $9magen('#mtcontainer');
+		<?php if($this->getConfig('fillter_cat')){?>
+    	$default = $9magen('#filters').find('.selected').attr('data-option-value'); 
+    	<?php }else{?>
+    	$default = '*';
+    	<?php }?>
+    	var options = {};
+    	options[ 'filter' ] = $default; 
+    	$container.isotope( options );
+        $9magen(function(){   
+            $container.isotope({
+                itemSelector : '.element',
+                getSortData : { 
+                    category : function( $elem ) {
+                      return $elem.attr('data-category');
+                    } 
+                }
+            }); 
+            var $optionSets = $9magen('#options .option-set'),
+                $optionLinks = $optionSets.find('a'); 
+            $optionLinks.click(function(){
+                var $this = $9magen(this);
+                // don't proceed if already selected
+                if ( $this.hasClass('selected') ) {
+                    return false;
+                }
+                var $optionSet = $this.parents('.option-set');
+                $optionSet.find('.selected').removeClass('selected');
+                $this.addClass('selected');
+          
+                // make option object dynamically, i.e. { filter: '.my-filter-class' }
+                var options = {},
+                    key = $optionSet.attr('data-option-key'),
+                    value = $this.attr('data-option-value');
+                // parse 'false' as false boolean
+                value = value === 'false' ? false : value; 
+                options[ key ] = value;
+                if ( key === 'layoutMode' && typeof changeLayoutMode === 'function' ) {
+                    // changes in layout modes need extra logic  
+                    changeLayoutMode( $this, options )
+                } else {
+                    // otherwise, apply new options 
+                    $container.isotope( options );
+                }
+
+                return false;
+            }); 
+        }); 
+        $9magen(window).resize(function () {   
+        	<?php if($this->getConfig('fillter_cat')){?>
+        	$selected = $9magen('#filters').find('.selected').attr('data-option-value'); 
+        	<?php }else{?>
+        	$selected = '*';
+        	<?php }?>
+        	var options = {};
+        	options[ 'filter' ] = $selected; 
+        	$container.isotope( options );
+        });
+	});
+</script> 
+<?php 
+$catcount = array();
+foreach($_catalog as $_cat){   
+		$catcount[$_cat->getId()] = 0;
+} 
+foreach ($_productCollection as $_product) {
+	foreach($catcount as $catkey => $catvalue){
+		$categoryIds = $_product->getCategoryIds();
+		$categoryId =  current($categoryIds);
+		if ($categoryId==$catkey) {
+			$catcount[$categoryId] +=1;
+		}
+	}
+}
+?>  
+<div class="mt-products-list">
+<section id="options" class="mt-prolist-title clearfix">
+    <div class="top-actions-inner">
+			<?php if($this->getConfig('title')){?>
+			<div class="product-title">
+				<h2><?php echo $this->getConfig('title'); ?></h2>
+			</div>
+			<?php }?>
+			<?php if($this->getConfig('fillter_order')){?>
+			<div class="order-fillter">
+				<ul id="sort-direction" class="option-set clearfix" data-option-key="sortAscending">
+					<li><a href="#sortAscending=true" data-option-value="true" class="selected"><?php echo $this->__('Sort Ascending');?></a></li>
+					<li><a href="#sortAscending=false" data-option-value="false"><?php echo $this->__('Sort Descending');?></a></li>
+				</ul>
+			</div>
+			<?php }?>
+			<?php if($this->getConfig('fillter_cat')){?>
+			<div class="cat-fillter">
+				<ul id="filters" class="option-set clearfix" data-option-key="filter">
+					<li><a href="#filter" data-option-value="*"><?php echo $this->__('Show All');?></a></li>
+					<?php 
+						$i=0;
+						foreach($_catalog as $_cat){ 
+							if ($catcount[$_cat->getId()]>0) {
+						?> 
+							<li><a href="#filter" data-option-value=".filter-cat-<?php echo $_cat->getId();?>" <?php if($i==0) echo 'class="selected"';?>><?php echo $_cat->getName();?></a></li>
+						<?php
+							} 
+							$i++;
+						}
+					?> 
+				</ul> 
+			</div>
+			<?php }?>
+	</div>
+</section>
+<div id="mtcontainer" class=" clickable clearfix">  
+	<?php foreach ($_productCollection as $_product): ?> 
+	<?php 
+		if ($this->getConfig('width')==null){
+			$w=0;
+		} else {
+			$w=$this->getConfig('width');
+		}
+		if($this->getConfig('height')==null){
+			$h=0; }
+		else {
+			$h=$this->getConfig('height');
+		} 
+		$categoryIds = $_product->getCategoryIds(); 
+		$categoryId =  current($categoryIds);
+	?>
+	<div class="item element filter-cat-<?php echo $categoryId;?>" data-category="filter-cat-<?php echo $categoryId;?>" style="width: <?php echo $this->getConfig('items_width'); ?>px;">  
+      	<?php if(!$this->getConfig('zoom_enabled')): ?>
+			<div class="item-inner">
+			<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" class="product-image">
+			<div id="<?php echo $_product->getId();?>">
+			<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($w,$h); ?>" alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+			</div>
+			</a>			
+			</div>
+					<div id="products-name"><h2 class="product-name"><a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>"><span><span><?php echo $this->htmlEscape($_product->getName()) ?></span></span></a></h2></div>																																																																	
+
+		<?php else: ?>
+			<a href="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize(600,600); ?>" class = "cloud-zoom product-image" style="position: relative; display: block;" rel="adjustX:10, adjustY:-2, zoomWidth:<?php echo $this->getConfig('zoom_width') ?>, zoomHeight:<?php echo $this->getConfig('zoom_height') ?>">
+			<div id="<?php echo $_product->getId();?>">
+			<img src="<?php echo $this->helper('catalog/image')->init($_product, 'small_image')->resize($w,$h); ?>" " alt="<?php echo $this->htmlEscape($this->getImageLabel($_product, 'small_image')) ?>" />
+			</div>
+			</a>
+			
+		<?php endif; ?>
+		<?php if ( $this->getConfig('review') ): ?>
+			<?php echo $this->getReviewsSummaryHtml($_product, 'short') ?>
+		<?php endif; ?>
+		<div class="top-actions"> 
+		    <div class="top-actions-inner">
+				<div class="mt-price-inner">
+					<?php if($this->getConfig('price')): ?>
+						<?php echo $this->getPriceHtml($_product, true) ?>
+					<?php endif; ?>
+				</div>
+				<div class="clearfix"></div>
+				<div class="mt-add-details">
+					<?php if ( $this->getConfig('addtocart') ){?>
+			<?php if($_product->isSaleable()): ?>
+				<?php if ( !($_product->getTypeInstance(true)->hasRequiredOptions($_product) || $_product->isGrouped()) ) { ?>
+				<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="ajaxaddcart('<?php echo $this->getAddToCartUrl($_product) ?>',<?php echo $_product->getId() ?>)"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+				<?php } else { ?>
+				<button type="button" title="<?php echo $this->__('Add to Cart') ?>" class="button btn-cart" onclick="showOptions('<?php echo $_product->getId()?>')"><span><span><?php echo $this->__('Add to Cart') ?></span></span></button>
+				<a href='<?php echo $this->getUrl('mtlaniusadmin/index/options',array('product_id'=>$_product->getId()));?>' class='fancybox' id='fancybox<?php echo $_product->getId()?>' style='display:none'>Add</a>
+				<?php }?>
+			<?php else: ?>
+				<p class="availability out-of-stock"><span><?php echo $this->__('Out of stock') ?></span></p>
+			<?php endif; ?>
+			<?php }?>
+			
+			<button type="button" title="<?php echo $this->__('Detail') ?>" class="button btn-detail" onclick="setLocation('<?php echo $_product->getProductUrl() ?>')"><span><span><?php echo $this->__('Detail') ?></span></span></button>
+			<?php if( $this->getConfig('addtowishlist') || $this->getConfig('addtocompare') ){?>
+			<ul class="add-to-links">
+				<?php if( $this->getConfig('addtowishlist') ){?>
+				<?php if ($this->helper('wishlist')->isAllow()) : ?>
+					<li><a href="<?php echo $this->helper('wishlist')->getAddUrl($_product) ?>" class="link-wishlist"><?php echo $this->__('Add to Wishlist') ?></a></li>
+				<?php endif; ?>
+				<?php } ?>
+				<?php if( $this->getConfig('addtocompare') ){?>
+				<?php if($_compareUrl=$this->getAddToCompareUrl($_product)): ?>
+					<li class="last"> <a href="<?php echo $_compareUrl ?>" class="link-compare"><?php echo $this->__('Add to Compare') ?></a></li>
+				<?php endif; ?>
+				<?php }?>
+			</ul>
+			<?php }?>
+				</div>
+			</div>
+		</div>							
+		<?php if( $this->getConfig('shortdescription') ){?>
+		<div class="mt-desc">
+			<?php if( !$this->getConfig('maxlength') ){?>
+				<?php echo nl2br($this->htmlEscape($_product->getShortDescription())) ?>
+			<?php } else {?>
+				<?php echo nl2br(substr($this->htmlEscape($_product->getShortDescription()),0,$this->getConfig('maxlength')).'...') ?>			            
+			<?php }?>
+			<a href="<?php echo $_product->getProductUrl() ?>" title="<?php echo $this->htmlEscape($_product->getName()) ?>" class="link-more"><?php echo $this->__('Learn More') ?></a>
+		</div>
+		<?php }?>
+    </div>   
+    <?php endforeach ?>
+</div> </div>
+<?php }?>

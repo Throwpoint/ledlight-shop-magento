@@ -1,0 +1,347 @@
+/* MagenThemes Products List*/
+#mtcontainer  .item {
+         line-height:35px;
+	     float:left;
+		 border: 1px solid #E3E3E3;
+		 background:#fff;
+    }
+#mtcontainer  .item:hover{}	
+.mt-products-grid .first {
+        margin-left:2px;    
+    }
+#mtcontainer  .item{        
+        padding: 10px;
+    }
+#mtcontainer  .mt-price-inner  {padding:5px 0;}	
+#mtcontainer  .mt-price-inner .mt-price { 
+    background: url(bg-price.png) no-repeat scroll 0 0 transparent;
+    color: #7C7C7C;
+    float: left;
+    height: 16px;
+    line-height: 32px;
+    margin:  8px 7px 0 0;
+    text-indent: -9999px;
+    text-transform: uppercase;
+    width: 16px;}	
+.mt-products-list .mt-prolist-title  {
+        background:#F0F0F0;   
+        -webkit-border-radius: 4px;
+        -moz-border-radius: 4px;
+        border-radius: 4px;		
+		position:relative;
+		z-index:2;
+    }
+.mt-prolist-title-inner	{background:#e2e2e2;}
+.mt-products-list .mt-prolist-title  h2 {
+        color:#0A263C;
+        padding:3px 0 5px;
+        font-size:150%;
+		line-height:20px;
+		margin:0;
+    }
+#mtcontainer .product-name a {
+        color:#818181;
+        font-size:100%;
+        text-decoration:none;
+    }
+#mtcontainer .product-name a:hover {
+        text-decoration:underline;
+    }
+#mtcontainer .product-name {
+        padding-top: 5px;
+		border-bottom: 1px solid #ECEDED;
+    }
+	
+div.cat-fillter {float: right;}
+div.order-fillter { 
+    float: right;
+    padding-left: 15px;
+    width: 245px;
+}
+div.product-title {
+    float: left;
+    font-size: 110%;
+    padding: 0 ;
+}
+/**** Isotope CSS3 transitions ****/ 
+.isotope,
+.isotope .isotope-item {
+  -webkit-transition-duration: 0.8s;
+     -moz-transition-duration: 0.8s;
+      -ms-transition-duration: 0.8s;
+       -o-transition-duration: 0.8s;
+          transition-duration: 0.8s;
+}
+
+.isotope {
+  -webkit-transition-property: height, width;
+     -moz-transition-property: height, width;
+      -ms-transition-property: height, width;
+       -o-transition-property: height, width;
+          transition-property: height, width;
+}
+
+.isotope .isotope-item {
+  -webkit-transition-property: -webkit-transform, opacity;
+     -moz-transition-property:    -moz-transform, opacity;
+      -ms-transition-property:     -ms-transform, opacity;
+       -o-transition-property:         top, left, opacity;
+          transition-property:         transform, opacity;
+}
+
+/**** disabling Isotope CSS3 transitions ****/
+
+.isotope.no-transition,
+.isotope.no-transition .isotope-item,
+.isotope .isotope-item.no-transition {
+  -webkit-transition-duration: 0s;
+     -moz-transition-duration: 0s;
+      -ms-transition-duration: 0s;
+       -o-transition-duration: 0s;
+          transition-duration: 0s;
+}
+
+/* End: Recommended Isotope styles */
+
+
+
+/* disable CSS transitions for containers with infinite scrolling*/
+.isotope.infinite-scrolling {
+  -webkit-transition: none;
+     -moz-transition: none;
+      -ms-transition: none;
+       -o-transition: none;
+          transition: none;
+}
+
+
+#mtcontainer { 
+  padding: 0;
+  margin-bottom: 20px;
+
+}
+
+.element { 
+  margin: 0 3px 20px 10px !important;
+  float: left ; 
+  position: relative;
+  color: #222;
+
+  padding: 15px 0;
+}
+
+.element.alkali          { background: #F00; background: hsl(   0, 100%, 50%); }
+.element.alkaline-earth  { background: #F80; background: hsl(  36, 100%, 50%); }
+.element.lanthanoid      { background: #FF0; background: hsl(  72, 100%, 50%); }
+.element.actinoid        { background: #0F0; background: hsl( 108, 100%, 50%); }
+.element.transition      { background: #0F8; background: hsl( 144, 100%, 50%); }
+.element.post-transition { background: #0FF; background: hsl( 180, 100%, 50%); }
+.element.metalloid       { background: #08F; background: hsl( 216, 100%, 50%); }
+.element.other.nonmetal  { background: #00F; background: hsl( 252, 100%, 50%); }
+.element.halogen         { background: #F0F; background: hsl( 288, 100%, 50%); }
+.element.noble-gas       { background: #F08; background: hsl( 324, 100%, 50%); }
+
+
+.element * {
+  margin: 0;
+}
+
+.element .symbol {
+  left: 0.2em;
+  top: 0.4em;
+  font-size: 3.8em;
+  line-height: 1.0em;
+  color: #FFF;
+}
+.element.large .symbol {
+  font-size: 4.5em;
+}
+
+.element.fake .symbol {
+  color: #000;
+}
+
+.element .name {
+  left: 0.5em;
+  bottom: 1.6em;
+  font-size: 1.05em;
+}
+
+.element .weight {
+  font-size: 0.9em;
+  left: 0.5em;
+  bottom: 0.5em;
+}
+
+.element .number {
+  font-size: 1.25em;
+  font-weight: bold;
+  color: hsla(0,0%,0%,.5);
+  right: 0.5em;
+  top: 0.5em;
+}
+
+.variable-sizes .element.width2 { width: 230px; }
+
+.variable-sizes .element.height2 { height: 230px; }
+
+.variable-sizes .element.width2.height2 {
+  font-size: 2.0em;
+}
+
+.element.large,
+.variable-sizes .element.large,
+.variable-sizes .element.large.width2.height2 {
+  font-size: 3.0em;
+  width: 350px;
+  height: 350px;
+  z-index: 100;
+}
+
+.clickable .element:hover {
+  cursor: pointer;
+}
+
+.clickable .element:hover h3 {
+  text-shadow:
+    0 0 10px white,
+    0 0 10px white
+  ;
+}
+
+.clickable .element:hover h2 {
+  color: white;
+}
+/**** Example Options ****/
+
+#options {
+  padding-bottom: 0;
+  padding-top: 8px;
+  margin: 0 0 10px;
+}
+
+#options h3 {
+  margin-bottom: 0.2em;
+  font-size: 15px;
+}
+
+#options h4 { 
+  font-weight: bold;
+}
+
+#options ul {
+  margin: 0;
+  list-style: none;
+}
+
+#options ul ul {
+  margin-left: 1.5em;
+}
+
+#options li {
+  float: left;
+  margin-bottom: 10px;
+}
+
+#options li a {
+  display: block;
+  padding: 0.4em 0.5em;
+  
+  color: #fff;
+  font-weight: normal;
+}
+
+#options li a:hover {
+ 
+}
+
+#options li a:active {
+  
+}
+
+#options li a {
+     margin: 0 2px;
+	color:#292217;
+	background:#ECE7DE;
+}
+#options li a:hover{text-decoration:none;background:#37424c;color:#fff;}
+#options li a.selected {
+   color:#fff;
+   background:#37424c;
+   margin: 0 2px;
+}
+#options li:first-child a {
+  
+}
+
+#options li:last-child a {
+}
+
+
+
+/* Combination filter options*/
+
+#options .option-combo {
+  display: inline-block;
+  float: left;
+  margin-right: 10px;
+}
+
+#options .option-combo ul {
+  margin-right: 20px;
+  display: inline-block;
+}
+
+#options .option-combo h2,
+#options .option-combo h4 {
+  line-height: 34px;
+  margin-bottom: 0;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+}
+@media (min-width: 940px) and (max-width: 1170px) {
+    #mtcontainer .element {
+		width: 201px !important;
+	}
+}
+
+@media (min-width: 768px) and (max-width: 979px) {
+	#mtcontainer .element {
+		width: 202px !important;
+	}
+}
+@media (max-width: 767px) {
+	#mtcontainer .element {
+		width: 300px ;
+	}
+}
+
+@media (max-width: 480px) {
+	
+	#mtcontainer .element {
+		width: 270px !important;
+	}
+    
+    .main-inner {
+        padding: 5px !important;
+    }
+    div.order-fillter {
+        float: left !important;
+        margin-left: 5px !important;
+        padding-left: 5px !important;
+		padding-bottom: 5px !important;
+        width: 100%;
+    }
+    div.cat-fillter {
+		float: left !important;
+		margin-left:10px !important;
+	}
+}
+@media (max-width: 340px) {
+      	#mtcontainer .element {
+      		width: 260px !important;
+      		margin:0;
+      	}
+	#mtcontainer .element .product-image img{	width: 260px ; }
+}

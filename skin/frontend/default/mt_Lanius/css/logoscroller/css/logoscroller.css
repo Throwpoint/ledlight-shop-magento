@@ -1,0 +1,30 @@
+.mt-logoscroller {position: relative; overflow: hidden;background:none;} 
+.mt_productscroller{position:relative;display:block; clear: both; width: 100%;}
+.mt-logo-scroller { display:block; overflow: hidden;padding:5px 0; margin: 0 30px; position: relative;width: 100%;}
+.mt-logo-scroller > ul {display:block;}
+.mt-logo-scroller > ul > li{padding:0;overflow:hidden !important;border:none;}
+.mt-logo-scroller > ul > li.loading {background:url(../images/loading.gif) no-repeat center;}
+.mt-logo-scroller div.catpanel  {display:block; text-align: center; visibility: hidden; opacity: 0;}
+.mt-logo-scroller div.catpanel > div {display:block;margin:0 5px; text-align: center; position: relative;}
+.mt-logo-scroller div.catpanel > div > a{display:block;}
+.mt-logo-scroller div.catpanel > div > a.img{padding: 5px;border:1px solid #ddd;box-shadow: 0 0 5px #ccc;display: table; margin:auto;}
+.mt-logo-scroller div.catpanel > div > span.img{padding: 5px;border:1px solid #ddd;box-shadow: 0 0 5px #ccc; display: table; margin:auto;}
+.mt-logo-scroller div.catpanel > div > a.img:hover{opacity:0.9; border: 1px solid #b7b7b7;}
+.mt-logo-scroller div.catpanel > div > span.img:hover{opacity:0.9; border: 1px solid #b7b7b7;}
+.mt-logo-scroller div.catpanel > div > a.title{margin:10px 0; font-size:120%;font-family:Tahoma;}
+.mt-logo-scroller div.catpanel > div.block p {margin: 0;}
+
+div.logopagenave { display: block;width:100%;position: absolute; margin: 0 10px;}
+div.logopagenave > button{
+    height:17px;width:11px;display:block;border:none;cursor:pointer;padding:0;
+    background:url(../images/hor_ctr.png) no-repeat;
+}
+div.logopagenave > .next { right:-64px;position:absolute;background:url(../images/hor_ctr.png) 100% 0 no-repeat; width:11px;height:17px;border:none;}
+div.logopagenave > .next:hover{background-position:100% -17px;}
+div.logopagenave > .next:active{background-position: right -100px;}
+
+div.logopagenave >.prev {left:0;position:absolute;background:url(../images/hor_ctr.png) 0 0 no-repeat; width:11px;height:17px;border:none;}
+div.logopagenave > .prev:hover{background-position:0 -17px;}
+div.logopagenave > .prev:active{background-position: 0 -100px;}
+
+

@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<config>
+	<modules>
+		<Ledlight_Inventory>
+			<version>0.0.1</version>
+		</Ledlight_Inventory>
+	</modules>
+
+	<frontend>
+		<routers>
+			<inventory>
+				<use>standard</use>
+				<args>
+					<module>Ledlight_Inventory</module>
+					<frontName>inventory</frontName>
+				</args>
+			</inventory>
+		</routers>
+
+		<layout>
+			<updates>
+				<inventory>
+					<file>inventory.xml</file>
+				</inventory>
+			</updates>
+		</layout>
+	</frontend>
+	
+</config>

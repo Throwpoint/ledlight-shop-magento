@@ -1,0 +1,225 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php $megamenu = $this->getMegamenu(); ?>
+<div class="content-header">
+    <h3 class="icon-head head-categories"><?php echo $this->htmlEscape($this->getHeader()) . ($this->getMegamenuId() ? ' (' . Mage::helper('megamenu')->__('ID: %s', $this->getMegamenuId()) . ')' : '') ?></h3>
+    <p class="content-buttons form-buttons">
+        <?php echo $this->getResetButtonHtml() ?>
+        <?php if($megamenu->getId()): ?>
+            <?php echo $this->getDeleteButtonHtml() ?>
+        <?php endif; ?>
+        <?php echo $this->getSaveButtonHtml() ?>
+    </p>
+</div>
+<iframe name="iframeSave" style="display:none; width:100%;" src="<?php echo $this->getJsUrl() ?>blank.html"></iframe>
+<form target="iframeSave" id="megamenu_edit_form" action="<?php echo $this->getSaveUrl() ?>" method="post" enctype="multipart/form-data">
+    <div class="no-display">
+        <input type="hidden" name="isIframe" value="1" />
+        <input name="form_key" type="hidden" value="<?php echo $this->getFormKey() ?>" />
+        <input name="store_id" type="hidden" value="<?php echo Mage::getSingleton('admin/session')->getLastViewedStore(); ?>" />
+        <?php if($this->getRequest()->has('parent')): ?>
+            <?php if($this->getRequest()->getParam('parent')): ?>
+                <input name="megamenu[parent_id]" type="hidden" value="<?php echo $this->getRequest()->getParam('parent') ?>" />
+            <?php else: ?>
+                <input name="megamenu[parent_id]" type="hidden" value="0" />
+            <?php endif; ?>
+        <?php else: ?>
+            <?php if($megamenu->getId()): ?>
+                <input name="megamenu[parent_id]" type="hidden" value="<?php echo $megamenu->getParentId() ?>" />
+            <?php else: ?>
+                <input name="megamenu[parent_id]" type="hidden" value="0" />
+            <?php endif; ?>
+        <?php endif; ?>
+    </div>
+    <div id="category_content">
+        <?php if((!$this->getRequest()->has('parent') && !$megamenu) || ($megamenu && !$megamenu->isRoot()) || $this->getRequest()->getParam('parent')): ?>
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Megamenu Type') ?></h4>
+                <div class="form-buttons"></div>
+            </div>
+            <div id="megamenu-type" class="fieldset">
+                <div class="hor-scroll">
+                    <table class="form-list" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu_type"><?php echo $this->__('Megamenu Type') ?><span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <?php $types = $this->getLayout()->getBlock('megamenu.type')->getRootNodes(); ?>
+                                    <select class="input-text required-entry" id="megamenu[type]" name="megamenu[type]" onchange="changeType(this.value);">
+                                        <option value=""><?php echo $this->__('-- Please Select --') ?></option>
+                                        <?php foreach($types as $type): ?>
+                                            <?php echo $this->getLayout()->getBlock('megamenu.type')->getNodeHtml($type, $megamenu->getType()); ?>
+                                        <?php endforeach; ?>
+                                    </select>
+                                </td>
+                            </tr>
+                            <tr id="megamenu_external_link" <?php if(!$megamenu->getId() || $megamenu->getType() != 'external_link'): ?>style="display:none;"<?php endif; ?>>
+                                <td class="label">
+                                    <label for="megamenu[url]"><?php echo $this->__('Url') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input <?php if($megamenu->getType() != 'external_link'): ?>disabled="disabled"<?php endif; ?> type="text" id="megamenu[url]" name="megamenu[url]" class="input-text" value="<?php echo $megamenu->getUrl() ?>" />
+                                </td>
+                            </tr>
+                            <tr id="megamenu_cms_page" <?php if(!$megamenu->getId() || $megamenu->getType() != 'cms_page'): ?>style="display:none;"<?php endif; ?>>
+                                <td class="label">
+                                    <label for="megamenu[article]"><?php echo $this->__('Article') ?><span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <?php echo $this->getArticleHtml('cms_page', (!$megamenu->getId() || $megamenu->getType() != 'cms_page')); ?>
+                                </td>
+                            </tr>
+                            <tr id="megamenu_category" <?php if(!$megamenu->getId() || $megamenu->getType() != 'category'): ?>style="display:none;"<?php endif; ?>>
+                                <td class="label">
+                                    <label for="megamenu[article]"><?php echo $this->__('Article') ?><span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <?php echo $this->getArticleHtml('category', (!$megamenu->getId() || $megamenu->getType() != 'category')); ?>
+                                </td>
+                            </tr>
+                            <tr id="megamenu_static_block" <?php if(!$megamenu->getId() || $megamenu->getType() != 'static_block'): ?>style="display:none;"<?php endif; ?>>
+                                <td class="label">
+                                    <label for="megamenu[article]"><?php echo $this->__('Article') ?><span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <?php echo $this->getArticleHtml('static_block', (!$megamenu->getId() || $megamenu->getType() != 'static_block')); ?>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <?php endif; ?>
+        <div class="entry-edit">
+            <div class="entry-edit-head">
+                <h4 class="icon-head head-edit-form fieldset-legend"><?php echo $this->__('Megamenu Information') ?></h4>
+                <div class="form-buttons"></div>
+            </div>
+            <div id="megamenu-form" class="fieldset">
+                <div class="hor-scroll">
+                    <table class="form-list" cellpadding="0">
+                        <tbody>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu[title]"><?php echo $this->__('Title') ?><span class="required">*</span></label>
+                                </td>
+                                <td class="value">
+                                    <input type="text" id="megamenu[title]" name="megamenu[title]" class="input-text required-entry" value="<?php echo $megamenu->getTitle() ?>" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu[nofollow]"><?php echo $this->__('Nofollow') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->getNofollow() == 1): ?>checked="checked"<?php endif; ?> name="megamenu[nofollow]" id="megamenu:nofollow"/>&nbsp;<label for="megamenu:nofollow"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if($megamenu->getNofollow() != 1): ?>checked="checked"<?php endif; ?> name="megamenu[nofollow]" id="megamenu:nofollow"/>&nbsp;<label for="megamenu:nofollow"><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="image"><?php echo $this->__('Image') ?></label>
+                                </td>
+                                <td class="value">
+                                    <?php if($megamenu->getId() && $megamenu->getImage()): ?>
+                                        <a href="<?php echo Mage::getBaseUrl('media').$megamenu->getImage() ?>" onclick="imagePreview('megamenu_form_image'); return false;">
+                                            <img id="megamenu_form_image" class="small-image-preview v-middle" width="22" height="22" alt="<?php echo $megamenu->getTitle() ?>" title="<?php echo $megamenu->getTitle() ?>" src="<?php echo Mage::getBaseUrl('media').$megamenu->getImage() ?>" />
+                                        </a>
+                                        <input type="file" id="image" name="image" class="input-file" value="<?php echo $megamenu->getImage() ?>" />
+                                        <span class="delete-image">
+                                            <input id="megamenu_form_delete" type="checkbox" class="checkbox" value="1" name="image[delete]" />
+                                            <label for="megamenu_form_delete"><?php echo $this->__('Delete Image') ?></label>
+                                            <input type="hidden" value="<?php echo $megamenu->getImage() ?>" name="image[value]" />
+                                        </span>
+                                    <?php else: ?>
+                                        <input type="file" id="image" name="image" class="input-file" value="" />
+                                    <?php endif; ?>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu:is_group"><?php echo $this->__('Group') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->isGroup()): ?>checked="checked"<?php endif ;?> name="megamenu[is_group]" id="megamenu:is_group" />&nbsp;<label for="megamenu:is_group"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if(!$megamenu->isGroup()): ?>checked="checked"<?php endif ;?> name="megamenu[is_group]" id="megamenu:not_group" />&nbsp;<label for="megamenu:not_group"><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu:show_sub"><?php echo $this->__('Show Sub Menu') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->showSub()): ?>checked="checked"<?php endif ;?> name="megamenu[show_sub]" id="megamenu:show_sub" />&nbsp;<label for="megamenu:show_sub"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if(!$megamenu->showSub()): ?>checked="checked"<?php endif ;?> name="megamenu[show_sub]" id="megamenu:not_show_sub" />&nbsp;<label for="megamenu:not_show_sub"><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu[width]"><?php echo $this->__('Width') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input type="text" id="megamenu[width]" name="megamenu[width]" class="input-text validate-greater-than-zero" value="<?php echo $megamenu->getWidth() ?>" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu[subitem_width]"><?php echo $this->__('Sub Item Width') ?></label>
+                                </td>
+                                <td class="value">
+                                    <textarea id="megamenu[subitem_width]" name="megamenu[subitem_width]" class="input-text"><?php echo $megamenu->getSubitemWidth() ?></textarea>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu[col]"><?php echo $this->__('Col') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input type="text" id="megamenu[col]" name="megamenu[col]" class="input-text" value="<?php echo $megamenu->getCol() ?>" />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu:is_content"><?php echo $this->__('Is Content') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->isContent()): ?>checked="checked"<?php endif; ?> name="megamenu[is_content]" id="megamenu:is_content"/>&nbsp;<label for="megamenu:is_content"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if(!$megamenu->isContent()): ?>checked="checked"<?php endif; ?> name="megamenu[is_content]" id="megamenu:not_content"/>&nbsp;<label for="megamenu:not_content"><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu:show_title"><?php echo $this->__('Show Title') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->showTitle()): ?>checked="checked"<?php endif; ?> name="megamenu[show_title]" id="megamenu:show_title"/>&nbsp;<label for="megamenu:show_title"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if(!$megamenu->showTitle()): ?>checked="checked"<?php endif; ?> name="megamenu[show_title]" id="megamenu:not_show_title">&nbsp;<label for="megamenu:not_show_title"/><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td class="label">
+                                    <label for="megamenu:status"><?php echo $this->__('Published') ?></label>
+                                </td>
+                                <td class="value">
+                                    <input class="validate-one-required-by-name" type="radio" value="1" <?php if($megamenu->getId() && $megamenu->isActive()): ?>checked="checked"<?php endif; ?> name="megamenu[status]" id="megamenu:enable"/>&nbsp;<label for="megamenu:enable"><strong><?php echo $this->__('Yes') ?></strong></label>
+                                    <input type="radio" value="2" <?php if(!$megamenu->isActive()): ?>checked="checked"<?php endif; ?> name="megamenu[status]" id="megamenu:disable"/>&nbsp;<label for="megamenu:disable"><strong><?php echo $this->__('No') ?></strong></label>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

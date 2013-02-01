@@ -1,0 +1,52 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php $group = Mage::registry('megamenu_group_data'); ?>
+<div class="entry-edit">
+    <div class="entry-edit-head">
+        <h4 class="icon-head head-edit-form fieldset-legend"><?php echo Mage::helper('megamenu')->__('Design Information') ?></h4>
+    </div>
+    <div id="group_design_form" class="fieldset" <?php if(!$group->getParentId()): ?>style="display:none;"<?php endif ?>>
+        <div class="hor-scroll">
+            <table class="form-list" cellspacing="0">
+                <tbody>
+                    <tr>
+                        <td class="label">
+                            <label for="width"><?php echo $this->__('Width ') ?></label>
+                        </td>
+                        <td class="value">
+                            <input id="width" name="group[width]" class="input-text" type="text" value="<?php echo $group->getWidth(); ?>" />
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="label">
+                            <label for="rows"><?php echo $this->__('Rows ') ?></label>
+                        </td>
+                        <td class="value">
+                            <input id="rows" name="group[rows]" class="input-text" type="text" value="<?php echo $group->getRows(); ?>" />
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+
+<div id="<?php echo $this->getHtmlId() ?>_design_form" class="ignore-validate configurable-simple-product">
+<?php echo $this->getChildHtml('grid'); ?>
+<script type="text/javascript">
+    //<[CDATA[
+        $$('#group_parent_grid_table tbody tr td input.checkbox').each(function(element){
+            if(element.checked == true) {
+                element.setAttribute('name', 'group[parent_id]');
+            }
+        });
+    //]]->
+</script>
+</div>

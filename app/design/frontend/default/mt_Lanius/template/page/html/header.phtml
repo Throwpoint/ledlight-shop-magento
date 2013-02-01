@@ -1,0 +1,569 @@
+<?php
+/**
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Academic Free License (AFL 3.0)
+ * that is bundled with this package in the file LICENSE_AFL.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/afl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * DISCLAIMER
+ *
+ * Do not edit or add to this file if you wish to upgrade Magento to newer
+ * versions in the future. If you wish to customize Magento for your
+ * needs please refer to http://www.magentocommerce.com for more information.
+ *
+ * @category    design
+ * @package     base_default
+ * @copyright   Copyright (c) 2012 Magento Inc. (http://www.magentocommerce.com)
+ * @license     http://opensource.org/licenses/afl-3.0.php  Academic Free License (AFL 3.0)
+ */
+/**
+ * @var Mage_Page_Block_Html_Header $this
+ */
+$config = Mage::getStoreConfig('mtlaniusadmin/mtlaniusadmin_appearance');  
+$otherconfig = Mage::getStoreConfig('mtlaniusadmin/otherconfig'); 
+
+$link_color = isset($_COOKIE['linkColor']) ? $_COOKIE['linkColor'] : $config['link_color'];
+$text_color = isset($_COOKIE['textColor']) ? $_COOKIE['textColor'] : $config['text_color'];
+$bg_color = isset($_COOKIE['bodyColor']) ? $_COOKIE['bodyColor'] : $config['bg_color'];
+
+$body_pattern = isset($_COOKIE['bodyPattern']) ? $_COOKIE['bodyPattern'] : $config['pattern_body_select'];
+$header_pattern = isset($_COOKIE['headerPattern']) ? $_COOKIE['headerPattern'] : $config['pattern_header_select'];
+$main_pattern = isset($_COOKIE['mainPattern']) ? $_COOKIE['mainPattern'] : $config['pattern_main_select'];
+
+$header_bg_color = isset($_COOKIE['HeaderbgColor']) ? $_COOKIE['HeaderbgColor'] : $config['header_bg_color']; 
+$header_link_color = isset($_COOKIE['HeaderlinkColor']) ? $_COOKIE['HeaderlinkColor'] : $config['header_link_color'];
+$header_text_color = isset($_COOKIE['HeadertextColor']) ? $_COOKIE['HeadertextColor'] : $config['header_text_color'];
+
+$mainmenu_bg_color = isset($_COOKIE['MainmenubgColor']) ? $_COOKIE['MainmenubgColor'] : $config['mainmenu_bg_color']; 
+$mainmenu_link_color = isset($_COOKIE['MainmenulinkColor']) ? $_COOKIE['MainmenulinkColor'] : $config['mainmenu_link_color'];
+$mainmenu_text_color = isset($_COOKIE['MainmenutextColor']) ? $_COOKIE['MainmenutextColor'] : $config['mainmenu_text_color'];
+ 
+$panel_color = $config['color_panel'];
+$themestyles = isset($_COOKIE['theme_styles']) ? $_COOKIE['theme_styles'] : $config['theme_styles'];
+$gfont = 'Abel,Abril Fatface,Aclonica,Acme,Actor,Adamina,Aguafina Script,Aladin,Aldrich,Alegreya,Alegreya SC,Alex Brush,Alfa Slab One,Alice,Alike,Alike Angular,Allan,Allerta,Allerta Stencil,Allura,Almendra,Almendra SC,Amaranth,Amatic SC,Amethysta,Andada,Andika,Annie Use Your Telescope,Anonymous Pro,Antic,Anton,Arapey,Arbutus,Architects Daughter,Arimo,Arizonia,Armata,Artifika,Arvo,Asap,Asset,Astloch,Asul,Atomic Age,Aubrey,Bad Script,Balthazar,Bangers,Basic,Baumans,Belgrano,Bentham,Bevan,Bigshot One,Bilbo,Bilbo Swash Caps,Bitter,Black Ops One,Bonbon,Boogaloo,Bowlby One,Bowlby One SC,Brawler,Bree Serif,Bubblegum Sans,Buda,Buenard,Butcherman,Butterfly Kids,Cabin,Cabin Condensed,Cabin Sketch,Caesar Dressing,Cagliostro,Calligraffitti,Cambo,Candal,Cantarell,Cardo,Carme,Carter One,Caudex,Cedarville Cursive,Ceviche One,Changa One,Chango,Chelsea Market,Cherry Cream Soda,Chewy,Chicle,Chivo,Coda,Coda Caption,Comfortaa,Coming Soon,Concert One,Condiment,Contrail One,Convergence,Cookie,Copse,Corben,Cousine,Coustard,Covered By Your Grace,Crafty Girls,Creepster,Crete Round,Crimson Text,Crushed,Cuprum,Damion,Dancing Script,Dawning of a New Day,Days One,Delius,Delius Swash Caps,Delius Unicase,Devonshire,Didact Gothic,Diplomata,Diplomata SC,Dorsa,Dr Sugiyama,Droid Sans,Droid Sans Mono,Droid Serif,Duru Sans,Dynalight,EB Garamond,Eater,Electrolize,Emblema One,Engagement,Enriqueta,Erica One,Esteban,Euphoria Script,Ewert,Exo,Expletus Sans,Fanwood Text,Fascinate,Fascinate Inline,Federant,Federo,Felipa,Fjord One,Flamenco,Flavors,Fondamento,Fontdiner Swanky,Forum,Francois One,Fredericka the Great,Fresca,Frijole,Fugaz One,Galdeano,Gentium Basic,Gentium Book Basic,Geo,Geostar,Geostar Fill,Germania One,Give You Glory,Glegoo,Gloria Hallelujah,Goblin One,Gochi Hand,Goudy Bookletter 1911,Gravitas One,Gruppo,Gudea,Habibi,Hammersmith One,Handlee,Herr Von Muellerhoff,Holtwood One SC,Homemade Apple,Homenaje,IM Fell DW Pica,IM Fell DW Pica SC,IM Fell Double Pica,IM Fell Double Pica SC,IM Fell English,IM Fell English SC,IM Fell French Canon,IM Fell French Canon SC,IM Fell Great Primer,IM Fell Great Primer SC,Iceberg,Iceland,Inconsolata,Inder,Indie Flower,Inika,Irish Grover,Istok Web,Italianno,Jim Nightshade,Jockey One,Josefin Sans,Josefin Slab,Judson,Julee,Junge,Jura,Just Another Hand,Just Me Again Down Here,Kameron,Kaushan Script,Kelly Slab,Kenia,Knewave,Kotta One,Kranky,Kreon,Kristi,La Belle Aurore,Lancelot,Lato,League Script,Leckerli One,Lekton,Lemon,Lilita One,Limelight,Linden Hill,Lobster,Lobster Two,Lora,Love Ya Like A Sister,Loved by the King,Luckiest Guy,Lusitana,Lustria,Macondo,Macondo Swash Caps,Magra,Maiden Orange,Mako,Marck Script,Marko One,Marmelad,Marvel,Mate,Mate SC,Maven Pro,Meddon,MedievalSharp,Medula One,Megrim,Merienda One,Merriweather,Metamorphous,Metrophobic,Michroma,Miltonian,Miltonian Tattoo,Miniver,Miss Fajardose,Modern Antiqua,Molengo,Monofett,Monoton,Monsieur La Doulaise,Montaga,Montez,Montserrat,Mountains of Christmas,Mr Bedfort,Mr Dafoe,Mr De Haviland,Mrs Saint Delafield,Mrs Sheppards,Muli,Neucha,Neuton,News Cycle,Niconne,Nixie One,Nobile,Norican,Nosifer,Nothing You Could Do,Noticia Text,Nova Cut,Nova Flat,Nova Mono,Nova Oval,Nova Round,Nova Script,Nova Slim,Nova Square,Numans,Nunito,Old Standard TT,Oldenburg,Open Sans,Open Sans Condensed,Orbitron,Original Surfer,Oswald,Over the Rainbow,Overlock,Overlock SC,Ovo,PT Sans,PT Sans Caption,PT Sans Narrow,PT Serif,PT Serif Caption,Pacifico,Parisienne,Passero One,Passion One,Patrick Hand,Patua One,Paytone One,Permanent Marker,Petrona,Philosopher,Piedra,Pinyon Script,Plaster,Play,Playball,Playfair Display,Podkova,Poller One,Poly,Pompiere,Port Lligat Sans,Port Lligat Slab,Prata,Princess Sofia,Prociono,Puritan,Quantico,Quattrocento,Quattrocento Sans,Questrial,Quicksand,Qwigley,Radley,Raleway,Rammetto One,Rancho,Rationale,Redressed,Reenie Beanie,Ribeye,Ribeye Marrow,Righteous,Rochester,Rock Salt,Rokkitt,Ropa Sans,Rosario,Rouge Script,Ruda,Ruge Boogie,Ruluko,Ruslan Display,Ruthie,Sail,Salsa,Sancreek,Sansita One,Sarina,Satisfy,Schoolbell,Shadows Into Light,Shanti,Share,Shojumaru,Short Stack,Sigmar One,Signika,Signika Negative,Sirin Stencil,Six Caps,Slackey,Smokum,Smythe,Sniglet,Snippet,Sofia,Sonsie One,Sorts Mill Goudy,Special Elite,Spicy Rice,Spinnaker,Spirax,Squada One,Stardos Stencil,Stint Ultra Condensed,Stint Ultra Expanded,Stoke,Sue Ellen Francisco,Sunshiney,Supermercado One,Swanky and Moo Moo,Syncopate,Tangerine,Telex,Tenor Sans,Terminal Dosis,The Girl Next Door,Tienne,Tinos,Titan One,Trade Winds,Trochut,Trykker,Tulpen One,Ubuntu,Ubuntu Condensed,Ubuntu Mono,Ultra,Uncial Antiqua,UnifrakturCook,UnifrakturMaguntia,Unkempt,Unlock,Unna,VT323,Varela,Varela Round,Vast Shadow,Vibur,Vidaloka,Viga,Volkhov,Vollkorn,Voltaire,Waiting for the Sunrise,Wallpoet,Walter Turncoat,Wellfleet,Wire One,Yanone Kaffeesatz,Yellowtail,Yeseva One,Yesteryear,Zeyada';
+$hfont = isset($_COOKIE['h_font']) ? $_COOKIE['h_font'] : $config['h_font'];
+$bfont = isset($_COOKIE['b_font']) ? $_COOKIE['b_font'] : $config['b_font'];
+$mfont = isset($_COOKIE['m_font']) ? $_COOKIE['m_font'] : $config['m_font'];
+$gfontarray = explode(',',$gfont);
+?>
+<?php if($panel_color>0){?> 
+<div id="panel" class="hidden-phone hidden-tablet">
+    <div class="mainheader">
+        Magento themes sample settings
+    </div> 
+    <span class="btn-slide">Change Style</span>
+    <fieldset>
+        <p class="border"><span>Select one of sample color theme</span></p>
+       <ul class="scolors">
+            <li><a class="blue" href="#"></a></li>           
+        </ul> 
+        <ul class="listpanel">
+        	<li>
+		        <span class="mttitle">Body<span class="arrows current"></span></span>
+		        <div class="mainpattern mainbody active">
+                    <div class="mainsetting">
+                        <div class="bakcolor">
+                            <span>Background Color</span>
+                            <input type="text" id="color_body" value="<?php echo $bg_color;?>" name="color_body" size="10"/>
+                            <script type="text/javascript"> 
+                                $mtkb.fn.mColorPicker.defaults.currentId=false;
+                                $mtkb.fn.mColorPicker.defaults.currentInput = false;
+                                $mtkb.fn.mColorPicker.defaults.currentColor = false;
+                                $mtkb.fn.mColorPicker.defaults.changeColor = false;
+                                $mtkb.fn.mColorPicker.init.showLogo = false;
+                                $mtkb.fn.mColorPicker.defaults.color = false;
+                                $mtkb.fn.mColorPicker.defaults.imageFolder = "<?php echo $this->getJsUrl('magenthemes/mt_lanius/images/');?>";
+                                $mtkb(function($){
+                                    $mtkb("#color_body").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+                        <div class="textcolor">
+                            <span>Text Color</span>
+                            <input type="text" id="color_text" value="<?php echo $text_color;?>" name="color_text" size="10"/>
+                            <script type="text/javascript">  
+                                $mtkb(function($){
+                                    $mtkb("#color_text").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+                        <div class="linkcolor">
+                            <span>Link Color</span>
+                            <input type="text" id="color_link" value="<?php echo $link_color;?>" name="color_link" size="10"/>
+                            <script type="text/javascript">  
+                                $mtkb(function($){
+                                    $mtkb("#color_link").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+                        <div class="background">
+                            <div class="mt-pattern">
+                                <span>Background Image</span> 
+                                <div class="pattern-active" data="<?php echo $body_pattern;?>" id="select_image_body">
+									<?php
+									if($body_pattern=='none'){
+										echo "none";
+									}else{?>
+									<img src="<?php echo $this->getSkinUrl().'images/pattern_body/'.$body_pattern; ?>"/>
+									<?php }?>
+								</div> 
+                            </div>
+                        </div>
+                    </div>
+                    <div class="pattern-popup" id="popup_image_body" style="display: none;">
+						<?php 
+						$ptbody = Mage::helper('mtlaniusadmin')->getListPattern('pattern_body');
+						foreach($ptbody as $img){
+						?>
+                        <div class="item" data="<?php echo $img;?>">
+							<img src="<?php echo $this->getSkinUrl().'images/pattern_body/'.$img; ?>"/>
+						</div>
+						<?php }?> 
+                        <div class="item none" data="none">None</div>
+                    </div>
+		        </div>  
+	        </li>	  
+			<li> 
+		        <span class="mttitle">Header<span class="arrows"></span></span> 
+		        <div class="mainpattern">
+                    <div class="mainsetting">
+                        <div class="bakcolor">
+                            <span>Background Color</span>
+                            <input type="text" id="header_bg_color" value="<?php echo $header_bg_color;?>" name="header_bg_color" size="10"/>
+                            <script type="text/javascript"> 
+                                $mtkb(function($){
+                                    $mtkb("#header_bg_color").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+                        <div class="textcolor">
+                            <span>Text Color</span>
+                            <input type="text" id="header_text_color" value="<?php echo $header_text_color;?>" name="header_text_color" size="10"/>
+                            <script type="text/javascript">  
+                                $mtkb(function($){
+                                    $mtkb("#header_text_color").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+                        <div class="linkcolor">
+                            <span>Link Color</span>
+                            <input type="text" id="header_link_color" value="<?php echo $header_link_color;?>" name="header_link_color" size="10"/>
+                            <script type="text/javascript">  
+                                $mtkb(function($){
+                                    $mtkb("#header_link_color").width("77px").attr("data-hex", true).mColorPicker({swatches: [
+                                      "#9a1212",
+                                      "#93ad2a" 
+                                    ]});
+                                });
+                            </script>
+                        </div>
+						<div class="background">
+                            <div class="mt-pattern">
+                                <span>Background Image</span> 
+                                <div class="pattern-active" data="<?php echo $header_pattern;?>" id="select_image_header">
+									<?php
+									if($header_pattern=='none'){
+										echo "none";
+									}else{?>
+									<img src="<?php echo $this->getSkinUrl().'images/pattern_header/'.$header_pattern; ?>"/>
+									<?php }?>
+								</div> 
+                            </div>
+                        </div>
+					</div>
+						<div class="pattern-popup" id="popup_image_header" style="display: none;">
+						<?php 
+						$ptheader = Mage::helper('mtlaniusadmin')->getListPattern('pattern_header');
+						foreach($ptheader as $img){
+						?>
+                        <div class="item" data="<?php echo $img;?>">
+							<img src="<?php echo $this->getSkinUrl().'images/pattern_header/'.$img; ?>"/>
+						</div>
+						<?php }?> 
+                        <div class="item none" data="none">None</div>
+                    </div>
+		        </div> 
+	        </li> 
+			<li>
+		        <span class="mttitle">Main Top Container<span class="arrows"></span></span> 
+		        <div class="mainpattern">
+                    <div class="mainsetting">                                                                    
+						<div class="background">
+                            <div class="mt-pattern">
+                                <span>Background Image</span> 
+                                <div class="pattern-active" data="<?php echo $main_pattern;?>" id="select_image_main">
+									<?php
+									if($main_pattern=='none'){
+										echo "none";
+									}else{?>
+									<img src="<?php echo $this->getSkinUrl().'images/pattern_main/'.$main_pattern; ?>"/>
+									<?php }?>
+								</div> 
+                            </div>
+                        </div>
+					</div>
+					<div class="pattern-popup" id="popup_image_main" style="display: none;">
+						<?php 
+						$ptmain = Mage::helper('mtlaniusadmin')->getListPattern('pattern_main');
+						foreach($ptmain as $img){
+						?>
+                        <div class="item" data="<?php echo $img;?>">
+							<img src="<?php echo $this->getSkinUrl().'images/pattern_main/'.$img; ?>"/>
+						</div>
+						<?php }?> 
+                        <div class="item none" data="none">None</div>
+                    </div>
+		        </div> 
+	        </li>
+			<li>
+		        <span class="mttitle">Choose Google Font<span class="arrows"></span></span>
+		        <div class="mainpattern"> 
+		            <div class="textcolor">
+		                <span>Heading Font</span>
+		                <select name="h_font" id="h_font">
+                            <option value=""><?php echo $this->__('--Select--');?></option>
+							<?php foreach($gfontarray as $font){?>
+							<option value="<?php echo $font;?>" <?php if ($hfont == $font) { echo ' selected="selected"';  }?>><?php echo $font;?></option>
+							<?php }?>
+						</select>
+		            </div>
+                    <div class="textcolor">
+		                <span>Body Font</span>
+		                <select name="b_font" id="b_font">
+                            <option value=""><?php echo $this->__('--Select--');?></option>
+							<?php foreach($gfontarray as $font){?>
+							<option value="<?php echo $font;?>" <?php if ($bfont == $font) { echo ' selected="selected"';  }?>><?php echo $font;?></option>
+							<?php }?>
+						</select>
+		            </div>
+                    <div class="textcolor">
+		                <span>Menu Font</span>
+		                <select name="m_font" id="m_font">
+                            <option value=""><?php echo $this->__('--Select--');?></option>
+							<?php foreach($gfontarray as $font){?>
+							<option value="<?php echo $font;?>" <?php if ($mfont == $font) { echo ' selected="selected"';  }?>><?php echo $font;?></option>
+							<?php }?>
+						</select>
+		            </div> 
+		        </div>
+	        </li>
+			
+        </ul>
+    </fieldset>
+    <div class="mainaction">
+        <div class="btn-reset">
+            <button class="btreset"><span>Reset</span></button>
+        </div>
+        <div class="btn-apply">
+            <button class="button"><span>Apply Changes</span></button>
+        </div>
+    </div>
+</div>
+<?php if($otherconfig['enabled_social']){?>
+<div class="social-buttons button-<?php echo $otherconfig['social_position']?> hidden-phone hidden-tablet">
+	<?php if($otherconfig['fb_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['fb_link'];?>" id="facebook-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via Facebook');?></span>
+		</span>
+	</a>
+	<?php }?>
+	<?php if($otherconfig['twitter_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['twitter_link'];?>" id="twitter-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via Twitter');?></span>
+		</span>
+	</a>
+	<?php }?>
+	<?php if($otherconfig['google_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['google_link'];?>" id="google-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via Google');?></span>
+		</span>
+	</a>
+	<?php }?>
+	<?php if($otherconfig['p_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['p_link'];?>" id="pinterest-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via Pinterest');?></span>
+		</span>
+	</a>
+	<?php }?>
+	<?php if($otherconfig['y_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['y_link'];?>" id="youtube-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via Youtube');?></span>
+		</span>
+	</a>
+	<?php }?>
+	<?php if($otherconfig['rss_link']){?>
+	<a class="itemsocial" target="_blank" href="<?php echo $otherconfig['rss_link'];?>" id="rss-btn">
+		<span class="social-icon">
+			<span class="social-text"><?php echo $this->__('Follow via RSS');?></span>
+		</span>
+	</a>
+	<?php }?>
+</div>
+<script>
+	$mtkb(window).load(function(){
+		$mtkb('.social-buttons .social-icon').mouseenter(function(){
+			$mtkb(this).stop();
+			$mtkb(this).animate({width:'160'}, 500, 'easeOutQuad',function(){});  
+		});
+		$mtkb('.social-buttons .social-icon').mouseleave(function(){
+			$mtkb(this).stop();
+			$mtkb(this).animate({width:'43'}, 500, 'easeOutQuad',function(){});
+		});
+	});
+</script>
+<?php }?>
+<script type="text/javascript">
+    $mtkb(document).ready(function(){
+		$mtkb('#panel').accordion();
+        $mtkb('.btn-slide').toggle(function() { 
+            $mtkb('#panel').animate({
+                left: '-1'
+                }, 458, 'swing', function() { 
+                    $mtkb('.btn-slide').addClass('active'); 
+                }); 
+        }, function() { 
+            $mtkb('#panel').animate({
+                left: '-393'
+                }, 458, 'swing', function() { 
+                $mtkb('.btn-slide').removeClass('active'); 
+            }); 
+        });
+        var styles = {
+        		blue : {
+        			bg_color: "#ffffff", 
+					text_color: "#333333",
+					pattern_body_select: "pattern_1.png",
+				    pattern_main_select: "pattern_1.png",
+					link_color: "#2F2F2F", 
+					header_bg_color: "#ffffff", 
+					header_text_color: "#ffffff",
+					header_link_color: "#ffffff",
+					
+				},
+				
+				custom : {
+					bg_color: "<?php echo $bg_color;?>", 
+					pattern_body_select: "<?php echo $body_pattern;?>",
+					pattern_main_select: "<?php echo $main_pattern;?>",
+					text_color: "<?php echo $text_color;?>",
+					link_color: "<?php echo $link_color;?>", 
+					header_bg_color: "<?php echo $header_bg_color; ?>",
+					header_text_color: "<?php echo $header_text_color; ?>",
+					header_link_color: "<?php echo $header_link_color ?>",
+								
+				}  
+		}
+        $mtkb('.scolors a').click(function(e){
+    		var	style = jQuery(this).attr('class'); 
+    		var urlbody = '<?php echo $this->getSkinUrl().'images/pattern_body/'; ?>';
+    		var urlbody = '<?php echo $this->getSkinUrl().'images/pattern_main/'; ?>';
+    		$mtkb.fn.mColorPicker.setInputColor('color_link', styles[style]['link_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('color_text', styles[style]['text_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('color_body', styles[style]['bg_color']);
+    		
+    		$mtkb('#select_image_body').attr("data", styles[style]['pattern_body_select']); 
+    		$mtkb('#select_image_body').html('<img src="'+urlbody+''+styles[style]['pattern_body_select']+'"/>'); 
+    		
+			$mtkb('#select_image_main').attr("data", styles[style]['pattern_main_select']); 
+    		$mtkb('#select_image_main').html('<img src="'+urlbody+''+styles[style]['pattern_main_select']+'"/>'); 
+			
+    		$mtkb.fn.mColorPicker.setInputColor('header_text_color', styles[style]['header_text_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('header_link_color', styles[style]['header_link_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('header_bg_color', styles[style]['header_bg_color']);
+			
+    		$mtkb.fn.mColorPicker.setInputColor('mainmenu_text_color', styles[style]['mainmenu_text_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('mainmenu_link_color', styles[style]['mainmenu_link_color']);
+    		$mtkb.fn.mColorPicker.setInputColor('mainmenu_bg_color', styles[style]['mainmenu_bg_color']); 
+    		 
+   		 	$mtkb.cookie('theme_styles',style);
+    		return false;
+        }); 
+        $mtkb('.btn-apply').click(function(){
+            var textColor       = $mtkb('#color_text').val(),
+                linkColor       = $mtkb('#color_link').val(),
+                bodyColor       = $mtkb('#color_body').val(),
+                bodyPattern          = $mtkb('#select_image_body').attr("data"),
+				headerPattern        = $mtkb('#select_image_header').attr("data"),
+				mainPattern          = $mtkb('#select_image_main').attr("data"),
+                HeadertextColor   = $mtkb('#header_text_color').val(),
+                HeaderlinkColor   = $mtkb('#header_link_color').val(),
+				HeaderBgColor     = $mtkb('#header_bg_color').val(), 
+                MainBgColor     = $mtkb('#main_bg_color').val(), 
+                MainmenutextColor   = $mtkb('#mainmenu_text_color').val(),
+                MainmenulinkColor   = $mtkb('#mainmenu_link_color').val(),
+                MainmenuBgColor     = $mtkb('#mainmenu_bg_color').val(),  
+				hfont = $mtkb('#h_font').val();
+                bfont = $mtkb('#b_font').val();
+                mfont = $mtkb('#m_font').val();
+            
+                $mtkb.cookie('textColor',textColor);
+                $mtkb.cookie('linkColor',linkColor);
+                $mtkb.cookie('bodyColor',bodyColor);
+                $mtkb.cookie('HeadertextColor',HeadertextColor);
+                $mtkb.cookie('HeaderlinkColor',HeaderlinkColor);
+                $mtkb.cookie('HeaderbgColor',HeaderBgColor);
+                $mtkb.cookie('MainmenutextColor',MainmenutextColor);
+                $mtkb.cookie('MainmenulinkColor',MainmenulinkColor);
+                $mtkb.cookie('MainmenubgColor',MainmenuBgColor);
+                $mtkb.cookie('bodyPattern',bodyPattern); 
+				$mtkb.cookie('headerPattern',headerPattern);
+				$mtkb.cookie('mainPattern',mainPattern);
+                $mtkb.cookie('h_font',hfont);
+                $mtkb.cookie('b_font',bfont);
+                $mtkb.cookie('m_font',mfont); 
+                window.location.reload(true);
+        });
+        $mtkb('.btreset').click(function(){
+        		var	style = '<?php echo $themestyles;?>'; 
+                $mtkb.cookie('textColor', null);
+                $mtkb.cookie('linkColor', null);
+                $mtkb.cookie('bodyColor', null);
+                $mtkb.cookie('HeadertextColor', null);
+                $mtkb.cookie('HeaderlinkColor', null);
+                $mtkb.cookie('HeaderbgColor', null);
+                $mtkb.cookie('MainmenutextColor', null);
+                $mtkb.cookie('MainmenulinkColor', null);
+                $mtkb.cookie('MainmenubgColor', null);
+                $mtkb.cookie('bodyPattern', null); 
+				$mtkb.cookie('headerPattern', null);
+				$mtkb.cookie('mainPattern', null);
+                $mtkb.cookie("h_font", null); 
+                $mtkb.cookie("b_font", null);
+                $mtkb.cookie("m_font", null); 
+                window.location.reload(true);
+        });
+        $mtkb("#select_image_body").click(function () {
+            $mtkb('#popup_image_body').slideToggle();
+        }); 
+		$mtkb('#popup_image_body div.item').click(function(){
+        	var dataActive = $mtkb(this).attr('data');
+        	var dataCurrent = $mtkb('#select_image_body').attr("data"); 
+			var ptactive = $mtkb(this).find('img').attr('src'); 
+			if(dataActive=='none'){
+				$mtkb('body').css({  
+					'background-image': 'none'
+				})
+				$mtkb('#select_image_body').html('none');
+			}else{
+				$mtkb('body').css({  
+					'background-image': 'url("'+ptactive+'")',
+					'background-repeat': 'repeat-x',
+					'background-position': '0 0'
+				})
+				$mtkb('#select_image_body').html('<img src="'+ptactive+'"/>');
+			} 
+			$mtkb('#select_image_body').attr('data','');
+            $mtkb('#select_image_body').attr('data', dataActive);
+        });  
+		$mtkb("#select_image_header").click(function () {
+            $mtkb('#popup_image_header').slideToggle();
+        }); 
+		$mtkb('#popup_image_header div.item').click(function(){
+        	var dataActive = $mtkb(this).attr('data');
+        	var dataCurrent = $mtkb('#select_image_header').attr("data"); 
+			var ptactive = $mtkb(this).find('img').attr('src'); 
+			if(dataActive=='none'){
+				$mtkb('.header').css({  
+					'background-image': 'none'
+				})
+				$mtkb('#select_image_header').html('none');
+			}else{
+				$mtkb('.header').css({  
+					'background-image': 'url("'+ptactive+'")',
+					'background-repeat': 'repeat',
+					'background-position': '0 0'
+				})
+				$mtkb('#select_image_header').html('<img src="'+ptactive+'"/>');
+			} 
+			$mtkb('#select_image_header').attr('data','');
+            $mtkb('#select_image_header').attr('data', dataActive);
+        }); 
+		$mtkb("#select_image_main").click(function () {
+            $mtkb('#popup_image_main').slideToggle();
+        }); 
+		$mtkb('#popup_image_main div.item').click(function(){
+        	var dataActive = $mtkb(this).attr('data');
+        	var dataCurrent = $mtkb('#select_image_main').attr("data"); 
+			var ptactive = $mtkb(this).find('img').attr('src'); 
+			if(dataActive=='none'){
+				$mtkb('.wrapper').css({  
+					'background-image': 'none'
+				})
+				$mtkb('#select_image_main').html('none');
+			}else{
+				$mtkb('.wrapper').css({  
+					'background-image': 'url("'+ptactive+'")',
+					'background-repeat': 'repeat-x',
+					'background-position': '0 0'
+				})
+				$mtkb('#select_image_main').html('<img src="'+ptactive+'"/>');
+			} 
+			$mtkb('#select_image_main').attr('data','');
+            $mtkb('#select_image_main').attr('data', dataActive);
+        }); 
+    });  
+</script>
+<?php }?>
+
+<div class="mt-header-container">
+    <div class="container">
+		<div class="header">
+			<div class="row-fluid show-grid">
+						<div class="left-header span6">	
+							<div class="store-language "><?php echo $this->getChildHtml('store_language') ?></div>
+							<?php if ($this->getIsHomePage()):?>
+							<div class="logo">
+								<strong><?php echo $this->getLogoAlt() ?></strong>
+								<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>				 
+							</div>
+							
+							<?php else:?>
+							<div class="logo">
+								<strong><?php echo $this->getLogoAlt() ?></strong>
+								<a href="<?php echo $this->getUrl('') ?>" title="<?php echo $this->getLogoAlt() ?>" class="logo"><img src="<?php echo $this->getLogoSrc() ?>" alt="<?php echo $this->getLogoAlt() ?>" /></a>
+							</div>
+							<?php endif?>
+						</div>
+						<div class="right-header span6">			          
+								<p class="welcome-msg"><?php echo $this->getWelcome()?></p>
+								<?php echo $this->getChildHtml('topLinks') ?>
+								 <div class="clearfix"> </div>					
+								<div class="top-cart"><?php echo $this->getChildHtml('ajaxcart') ?></div>
+								<div class="topsearch visible-desktop"><?php echo $this->getChildHtml('topSearch') ?></div>
+						</div>
+				<div class="clearfix"> </div>
+			</div>
+           <?php echo $this->getChildHtml('topContainer'); ?>
+			</div>	 
+		</div>
+    </div>
+</div>
+
+<?php echo $this->getChildHtml('topMenu') ?>

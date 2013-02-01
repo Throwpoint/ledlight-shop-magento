@@ -1,0 +1,1119 @@
+<?xml version="1.0"?>
+<config>
+    <tabs>
+	<magenthemes translate="label" module="mtlaniusadmin">
+	    <label>Magenthemes</label>
+	    <sort_order>205</sort_order>
+	</magenthemes>
+    </tabs>
+    <sections>
+    <mtlaniusadmin translate="label" module="mtlaniusadmin">
+	    <label>MT Lanius Admin</label>
+	    <tab>magenthemes</tab>
+	    <sort_order>130</sort_order>
+	    <show_in_default>1</show_in_default>
+	    <show_in_website>1</show_in_website>
+	    <show_in_store>1</show_in_store>
+	    <groups>
+			<mtlaniusadmin_appearance translate="label">
+			    <label>General</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>1</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <fields>  
+			    	<main_options translate="label">
+                         <label>Main Options: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>0</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>0</show_in_website>
+                         <show_in_store>1</show_in_store>
+                    </main_options>
+					
+                    <theme_styles translate="label comment">
+						<label>Theme Styles: </label>
+						<comment>This color will be used for style</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtlaniusadmin/config_ThemeStyles</source_model> 
+						<frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_ThemeStyles</frontend_model>
+						<sort_order>1</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</theme_styles>
+
+					<h_font translate="label comment">
+						<label>Heading Font: </label>
+						<comment>This font will be used for font</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtlaniusadmin/config_GoogleFont</source_model>  
+						<frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_Font</frontend_model>
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</h_font>
+					<b_font translate="label comment">
+						<label>Body Font: </label>
+						<comment>This font will be used for font</comment>
+						<frontend_type>select</frontend_type>
+						<source_model>mtlaniusadmin/config_GoogleFont</source_model>
+						<frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_Font</frontend_model>  
+						<sort_order>3</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</b_font>
+										
+					<bg_color translate="label comment">
+						<label>Background Color: </label>
+						<comment>This color will be used for background</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</bg_color>
+					<text_color translate="label comment">
+	                    <label>Font Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>5</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </text_color>
+					<link_color translate="label comment">
+	                    <label>Link Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>6</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </link_color> 
+
+					<pattern_body_select translate="label comment">
+	                    <label>Pattern body: </label>
+	                    <comment>This color will be used for font</comment>
+						<frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_patternlist</frontend_model>
+	                    <sort_order>7</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </pattern_body_select>
+					<pattern_upload_body>
+						<label>Upload pattern body: </label>
+						<comment>JPG,PNG,GIF</comment>
+						<frontend_type>image</frontend_type>
+						<backend_model>adminhtml/system_config_backend_image</backend_model> 
+                        <upload_dir>skin/frontend/default/mt_lanius/images/pattern</upload_dir> 
+						<sort_order>8</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</pattern_upload_body>
+                    <back_top translate="label">
+                        <label>Enable Go To Top Button</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>9</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </back_top> 
+					 <favicon translate="label">
+						<label>Path Favicon:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</favicon>                  
+                     <color_panel translate="label">
+                        <label>Enable Change Color Site</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>11</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </color_panel> 	
+
+                    <header_options translate="label">
+                         <label>Header Options: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>12</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>0</show_in_website>
+                         <show_in_store>1</show_in_store>
+                    </header_options>  
+					
+					<header_bg_color translate="label comment">
+						<label>Background Header Color: </label>
+						<comment>This color will be used for background header</comment>
+						<frontend_type>text</frontend_type>
+						<frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+						<sort_order>13</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</header_bg_color>
+					<header_text_color translate="label comment">
+	                    <label>Header Text Color: </label>
+	                    <comment>This color will be used for font</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>14</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </header_text_color>
+					<header_link_color translate="label comment">
+	                    <label>Header Link Color: </label>
+	                    <comment>This color will be used for Link</comment>
+	                    <frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_color</frontend_model>
+	                    <sort_order>15</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </header_link_color>
+					
+					<pattern_header_select translate="label comment">
+	                    <label>Header background pattern: </label> 
+						<frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_headerpatternlist</frontend_model>
+	                    <sort_order>16</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </pattern_header_select>
+					<pattern_upload_header>
+						<label>Upload Header background pattern: </label>
+						<comment>JPG,PNG,GIF</comment>
+						<frontend_type>image</frontend_type>
+						<backend_model>adminhtml/system_config_backend_image</backend_model> 
+                        <upload_dir>skin/frontend/default/mt_lanius/images/pattern_header</upload_dir> 
+						<sort_order>17</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</pattern_upload_header>
+					
+					<main_top_options translate="label">
+                         <label>Main Top Options: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>18</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>0</show_in_website>
+                         <show_in_store>1</show_in_store>
+                    </main_top_options>
+					
+					<pattern_main_select translate="label comment">
+	                    <label>Main background pattern: </label> 
+						<frontend_type>text</frontend_type>
+	                    <frontend_model>mtlaniusadmin/adminhtml_system_config_form_field_mainpatternlist</frontend_model>
+	                    <sort_order>19</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </pattern_main_select>
+					
+					<pattern_upload_main>
+						<label>Upload Main Top background pattern: </label>
+						<comment>JPG,PNG,GIF</comment>
+						<frontend_type>image</frontend_type>
+						<backend_model>adminhtml/system_config_backend_image</backend_model> 
+                        <upload_dir>skin/frontend/default/mt_lanius/images/pattern_main</upload_dir> 
+						<sort_order>20</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</pattern_upload_main> 
+		
+			    </fields> 
+			</mtlaniusadmin_appearance>	
+			<navigation translate="label">
+				<label>Navigation</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>2</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<menu_effect translate="label">
+                        <label>Menu Animation</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtlaniusadmin/config_NavEffect</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </menu_effect>
+                    <home translate="label">
+                        <label>Home Link in Navigation</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>adminhtml/system_config_source_yesno</source_model>
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </home>
+					<show_type translate="label comment">
+						<label><![CDATA[Show type <em>(Show Category description or show static blocks with Identifier for url key category in dropdown)</em>: ]]></label>
+						<frontend_type>select</frontend_type>
+						<source_model>mtlaniusadmin/config_ShowType</source_model>
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</show_type> 
+					<show_learn_more translate="label comment">
+						<label><![CDATA[Show <b>"Learn more"</b> for description:]]></label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</show_learn_more>
+					<nav_urlkey translate="label comment">
+						<label>URL Key Category Show Dropdown Menu: </label>
+						<comment>Which url key you want they show dropdrow (Once per line)</comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</nav_urlkey>
+				</fields>
+			</navigation>
+			<custom_menu>
+				<label>Custom Menu</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<enable_custom translate="label">
+	                    <label>Enable Custom Menu</label>
+	                    <frontend_type>select</frontend_type>
+	                    <source_model>adminhtml/system_config_source_yesno</source_model>
+	                    <sort_order>1</sort_order>
+	                    <show_in_default>1</show_in_default>
+	                    <show_in_website>1</show_in_website>
+	                    <show_in_store>1</show_in_store>
+	                </enable_custom>
+	                <static_identifier translate="label comment">
+						<label>Static block identifiers: </label>
+						<comment>Which static block you want they show on menu (Once per line)</comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</static_identifier>
+					<page_id translate="label comment">
+						<label>CMS Page id: </label>
+						<comment>Which cms page you want they show on menu (Once per line)</comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>3</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</page_id>
+				</fields>
+			</custom_menu>
+			<thumbnailscroller translate="label">
+				<label>Thumbnail Scroller</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>3</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields> 
+					<direction translate="label">
+						<label>Direction thumbnail scroller: </label>
+						<frontend_type>select</frontend_type>
+						<source_model>mtlaniusadmin/config_ThumbDirection</source_model>
+						<sort_order>3</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+                 	</direction>
+					<enabled_scroller translate="label">
+						<label>Enable thumbnail scroller:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>4</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</enabled_scroller>
+					<control translate="label">
+						<label>Show control:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>5</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</control>
+					<items translate="label">
+						<label>Number of thumbnail show: </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>6</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+				   </items>
+					<width translate="label">
+						<label>Width of thumbnail:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>7</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</width>
+					<height translate="label">
+						<label>Height of thumbnail:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>8</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height>
+					<auto_scroll translate="label">
+						<label>Time of auto scroll:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>9</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</auto_scroll>
+                 	<speed translate="label">
+						<label>Speed of scroll: </label>
+						<frontend_type>text</frontend_type>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</speed>      
+                 	<enabled_zoom translate="label">
+						<label>Enable Cloud Zoom:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>13</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</enabled_zoom>
+					<width_z translate="label">
+						<label>Width of zoom panel:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>15</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</width_z>
+					<height_z translate="label">
+						<label>Height of zoom panel:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>16</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height_z>
+					<width_lbox translate="label">
+						<label>Width of lightbox:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>17></sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</width_lbox>
+					<height_lbox>
+						<label>Height of lightbox:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>18</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</height_lbox>
+				</fields>
+			</thumbnailscroller>	
+			<smartmenu translate="label">
+				<label>SmartMenu Config</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>4</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>  	
+					<title translate="label">
+                        <label>Title: </label>
+                        <frontend_type>text</frontend_type>   
+                        <sort_order>1</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </title> 
+					<menustyle translate="label">
+                        <label>Menu Style</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtlaniusadmin/config_menuanimate</source_model>
+                        <sort_order>2</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                    </menustyle>
+					<event translate="label">
+                        <label>Event</label>
+                        <frontend_type>select</frontend_type>
+                        <source_model>mtlaniusadmin/config_menuevent</source_model>
+                        <sort_order>3</sort_order>
+                        <show_in_default>1</show_in_default>
+                        <show_in_website>1</show_in_website>
+                        <show_in_store>1</show_in_store>
+                     </event>
+				</fields>
+			</smartmenu>
+			<productslist translate="label">
+				<label>Products List Config</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>5</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<enabled translate="label comment">
+						<label>Enabled</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>10</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						
+					</enabled>
+					<title translate="label">
+                         <label>Title: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>20</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </title>  
+                     <mode translate="label">
+                         <label>Mode: </label>
+                         <frontend_type>select</frontend_type>
+                         <source_model>mtlaniusadmin/productslist_config_mode</source_model>
+                         <sort_order>30</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </mode>
+                     <catsid translate="label">
+                         <label><![CDATA[Categories ID: </br><em>(Category name will not be displayed in filter if it have no product in this category can be show because the Product Limit set below or match the Mode!)</em> ]]></label>
+                         <frontend_type>multiselect</frontend_type>       
+                         <source_model>mtlaniusadmin/productslist_config_categories</source_model>                     
+                         <comment>Empty for all categories.</comment>
+                         <sort_order>40</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </catsid>  
+                     <fillter_cat translate="label">
+						<label>Display fillter category:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>41</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</fillter_cat>
+                     <fillter_order translate="label">
+						<label>Display fillter order:</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>42</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</fillter_order>
+                     <addtocart translate="label">
+						<label>Add to Cart</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>50</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</addtocart>
+					<addtowishlist translate="label">
+						<label>Add to Wishlist</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>60</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</addtowishlist>
+					<addtocompare translate="label">
+						<label>Add to Compare</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>70</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</addtocompare>
+					<price translate="label">
+						<label>Show price</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>75</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</price>
+					<review translate="label">
+						<label>Show review rating</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>80</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</review>
+					<shortdiscription translate="label">
+						<label>Short Discription</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>90</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</shortdiscription>
+					<maxlength translate="label">
+						<label>Short Description Max Length</label>
+						<frontend_type>text</frontend_type>
+						<backend_model>mtlaniusadmin/productslist_checkMaxLength</backend_model>
+						<comment>Empty for display all short discription.</comment>
+						<sort_order>95</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+						<default>3</default>
+					</maxlength>
+					<qty translate="label">
+                         <label>Qty of produts: </label>
+                         <frontend_type>text</frontend_type>   
+                         <backend_model>mtlaniusadmin/productslist_checkQty</backend_model>                         
+                         <comment>Empty for show all products.</comment>
+                         <sort_order>100</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </qty>   
+                     <items_width translate="label">
+						<label>Items Width:</label>
+						<frontend_type>text</frontend_type>
+						<sort_order>114></sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_store>1</show_in_store>
+						<show_in_website>1</show_in_website>
+					</items_width>
+                     <width translate="label">
+                         <label>Width of thumbnail: </label>
+                         <frontend_type>text</frontend_type>
+                         <backend_model>mtlaniusadmin/productslist_checkWidth</backend_model>                            
+                         <sort_order>115</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </width>
+                     <height translate="label">
+                         <label>Height of thumbnail: </label>
+                         <frontend_type>text</frontend_type>     
+                         <backend_model>mtlaniusadmin/productslist_checkHeight</backend_model>                       
+                         <sort_order>125</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </height>
+				</fields>
+			</productslist>	
+			<productsscroller translate="label">
+			    <label>Product Scroller</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>7</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <fields>
+					<enabled translate="label comment">
+					    <label>Show Scroller</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>10</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</enabled> 
+					<title translate="label">
+					    <label>Title</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>20</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry</validate>
+					</title>  
+					<mode translate="label">
+					    <label>Mode</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>mtlaniusadmin/productsscroller_mode</source_model>
+					    <sort_order>30</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</mode>
+					<catsid translate="label">
+					    <label>Categories</label>
+					    <frontend_type>multiselect</frontend_type>       
+					    <source_model>mtlaniusadmin/productsscroller_categories</source_model>                     
+					    <comment>Empty for all categories.</comment>
+					    <sort_order>40</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</catsid>
+					<use_fancybox translate="label comment">
+					    <label>Use Fancybox</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>41</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</use_fancybox>
+					<price translate="label">
+					    <label>Show price of product</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>45</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <default>3</default>
+					</price>
+					<review>
+					    <label>Show review rating</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>46</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_store>1</show_in_store>
+					    <show_in_website>1</show_in_website>
+					</review>
+					<addtocart translate="label">
+					    <label>Show add to cart</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>47</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</addtocart>
+					<detail translate="label">
+					    <label>Show detail button</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>50</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <depends><scroller_mode>scroller_1</scroller_mode></depends>
+					</detail>
+					<qty translate="label">
+					    <label>Qty of product</label>
+					    <frontend_type>text</frontend_type>                          
+					    <sort_order>90</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</qty>
+					<items>
+					    <label>Number of product show</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>95</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</items>
+					<items_scroll translate="label">
+					    <label>Number of product scroll</label>
+					    <frontend_type>text</frontend_type>                        
+					    <sort_order>100</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</items_scroll>
+					<auto translate="label comment">
+					    <label>Auto scroll</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>104</sort_order> 
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</auto>
+					<animation>
+					    <label>Animation time</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>105</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</animation>
+					<width_item translate="label">
+					    <label>Width of Item</label>
+					    <frontend_type>text</frontend_type>                          
+					    <sort_order>110</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</width_item>
+					<main_width translate="label">
+					    <label>Main width</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>118</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</main_width>
+					<main_height translate="label">
+					    <label>Main Height</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>119</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</main_height>
+					<width translate="label">
+					    <label>Width of Image</label>
+					    <frontend_type>text</frontend_type>                          
+					    <sort_order>120</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</width> 
+					<height translate="label">
+					    <label>Height of Image</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>130</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</height>
+					<show_tooltip translate="label comment">
+					    <label>Show Tooltip</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>140</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+						<depends><use_fancybox>1</use_fancybox></depends>
+					</show_tooltip>
+					<tooltip_width translate="label">
+					    <label>Width of Tooltip</label>
+					    <frontend_type>text</frontend_type>                          
+					    <sort_order>150</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+						<depends><use_fancybox>1</use_fancybox><show_tooltip>1</show_tooltip></depends>
+					</tooltip_width>
+					<tooltip_height translate="label">
+					    <label>Height of Tooltip</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>160</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+						<depends><use_fancybox>1</use_fancybox><show_tooltip>1</show_tooltip></depends>
+					</tooltip_height>
+					<tooltip_price translate="label">
+					    <label>Show price on Tooltip</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>161</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <default>3</default>
+					</tooltip_price>
+					<tooltip_review>
+					    <label>Show review rating on Tooltip</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>162</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_store>1</show_in_store>
+					    <show_in_website>1</show_in_website>
+					</tooltip_review>
+					<tooltip_addtocart translate="label">
+					    <label>Show add to cart on Tooltip</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>163</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</tooltip_addtocart>
+					<tooltip_shortdescription translate="label">
+					    <label>Show add to cart on Tooltip</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>164</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</tooltip_shortdescription> 
+			    </fields>
+			</productsscroller>
+			<logoscroller translate="label">
+			    <label>Logo Scroller</label>
+			    <frontend_type>text</frontend_type>
+			    <sort_order>8</sort_order>
+			    <show_in_default>1</show_in_default>
+			    <show_in_website>1</show_in_website>
+			    <show_in_store>1</show_in_store>
+			    <fields>
+					<enabled translate="label comment">
+					    <label>Show Logo Scroller</label>
+					    <frontend_type>select</frontend_type>
+					    <source_model>adminhtml/system_config_source_yesno</source_model>
+					    <sort_order>1</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</enabled>  
+					<main_width translate="label">
+					    <label>Main Width</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>2</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</main_width>
+					<main_height translate="label">
+					    <label>Main Height</label>
+					    <frontend_type>text</frontend_type>                           
+					    <sort_order>2</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</main_height>
+					<items_scroll translate="label">
+					    <label>Number of logo scroll</label>
+					    <frontend_type>text</frontend_type>                        
+					    <sort_order>3</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</items_scroll>
+					<auto translate="label comment">
+					    <label>Auto scroll</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>4</sort_order> 
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					</auto>
+					<animation>
+					    <label>Animation time</label>
+					    <frontend_type>text</frontend_type>
+					    <sort_order>5</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</animation>
+					<width_item translate="label">
+					    <label>Width of Item</label>
+					    <frontend_type>text</frontend_type>                          
+					    <sort_order>6</sort_order>
+					    <show_in_default>1</show_in_default>
+					    <show_in_website>1</show_in_website>
+					    <show_in_store>1</show_in_store>
+					    <validate>required-entry validate-greater-than-zero</validate>
+					</width_item>   
+					<logo_path translate="label comment">
+						<label>URL Path Logo: </label>
+						<comment>Which URL Path Logo key you want they show scroll (Once per line)</comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>7</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</logo_path>  
+			    </fields>
+			</logoscroller>
+			<static_config>
+				<label>Static Config</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>9</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<static_mainright translate="label comment">
+						<label> Right Static: </label>
+						<comment></comment>
+						<frontend_type>textarea</frontend_type> 
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store>
+					</static_mainright>  
+				</fields>
+			</static_config>
+			<otherconfig translate="label">
+				<label>Other Config</label>
+				<frontend_type>text</frontend_type>
+				<sort_order>10</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>
+				<fields>
+					<enabled_ajax translate="label comment">
+						<label>Enabled Ajax Cart</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>0</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					</enabled_ajax>
+					<enable_quicklook translate="label comment">
+						<label>Enabled Quicklook</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>1</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					</enable_quicklook>
+					<enabled_social translate="label comment">
+						<label>Enabled Social Button</label>
+						<frontend_type>select</frontend_type>
+						<source_model>adminhtml/system_config_source_yesno</source_model>
+						<sort_order>2</sort_order>
+						<show_in_default>1</show_in_default>
+						<show_in_website>1</show_in_website>
+						<show_in_store>1</show_in_store> 
+					</enabled_social>
+					<social_position translate="label">
+                         <label>Social Button Position: </label>
+                         <frontend_type>select</frontend_type>
+                         <source_model>mtlaniusadmin/config_socialposition</source_model>
+                         <sort_order>3</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </social_position>
+					<fb_link translate="label">
+                         <label>Facebook Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>4</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </fb_link>   
+                     <twitter_link translate="label">
+                         <label>Twitter Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>5</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </twitter_link>  
+                     <google_link translate="label">
+                         <label>Google Plus Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>6</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </google_link> 
+					 <p_link translate="label">
+                         <label>Pinterest Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>7</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </p_link>
+                     <y_link translate="label">
+                         <label>Youtube Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>8</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </y_link>
+                     <rss_link translate="label">
+                         <label>Rss Link: </label>
+                         <frontend_type>text</frontend_type>
+                         <sort_order>7</sort_order>
+                         <show_in_default>1</show_in_default>
+                         <show_in_website>1</show_in_website>
+                         <show_in_store>1</show_in_store>
+                     </rss_link>
+				</fields>
+			</otherconfig>
+			<info translate="label">
+				<label>Theme Information</label>
+				<frontend_type>text</frontend_type>
+				<frontend_model>mtlaniusadmin/adminhtml_system_config_information</frontend_model>
+				<sort_order>150</sort_order>
+				<show_in_default>1</show_in_default>
+				<show_in_website>1</show_in_website>
+				<show_in_store>1</show_in_store>   
+				<p_link>http://9magentothemes.com</p_link>
+		    	<y_link>http://9magentothemes.com</y_link>
+			</info>	
+	    </groups>
+	</mtlaniusadmin>
+    </sections>
+</config>

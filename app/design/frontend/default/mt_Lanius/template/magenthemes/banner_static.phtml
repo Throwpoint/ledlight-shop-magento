@@ -1,0 +1,9 @@
+
+
+<?php
+$config = Mage::getStoreConfig('mtlaniusadmin/static_config');
+$url = Mage::getBaseUrl(Mage_Core_Model_Store::URL_TYPE_WEB);
+?>
+<div class="span4">   
+<?php echo str_replace('{baseurl}', $url, $config['static_mainright']); ?>
+</div>

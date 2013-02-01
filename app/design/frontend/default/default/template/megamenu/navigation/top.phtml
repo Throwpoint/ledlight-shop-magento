@@ -1,0 +1,35 @@
+<?php
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+?>
+<?php if(Mage::helper('megamenu')->isActive()): ?>
+<?php $rootMenus = $this->getRootMenu(); ?>
+<div class="megamenu-container">
+    <div id="megamenu">
+        <ul>
+            <?php foreach($rootMenus as $rootMenu): ?>
+            <?php echo $this->getLayout()->createBlock($this->getType($rootMenu->getType())->getBlock())->setMenu($rootMenu)->drawItem() ?>
+            <?php endforeach; ?>
+            <li>
+                <div class="background">
+                    <div class="left>"></div>
+                </div>
+            </li>
+        </ul>
+    </div>
+</div>
+<script type="text/javascript">
+    //<!CDATA[
+    var megamenu = new Megamenu('megamenu', {
+            transition: Effect.Transitions.backOut,
+            fancy : <?php echo Mage::helper('megamenu')->isActiveFancy() ?>,
+            duration: <?php echo Mage::helper('megamenu')->getDuration() ?>
+        });
+    //]]>
+</script>
+<?php endif; ?>

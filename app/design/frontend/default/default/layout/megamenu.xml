@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+<!--
+/******************************************************
+ * @package Megamenu module for Magento 1.4.x.x and Magento 1.5.x.x
+ * @version 1.5.0.4
+ * @author http://www.9magentothemes.com
+ * @copyright (C) 2011- 9MagentoThemes.Com
+ * @license PHP files are GNU/GPL
+*******************************************************/
+-->
+<layout version="0.1.0">
+    <default>
+        <block type="megamenu/megamenu" name="megamenu.nav">
+            <action method="addType"><type>category</type><model>catalog/category</model><block>megamenu/type_category</block></action>
+            <action method="addType"><type>cms_page</type><model>cms/page</model><block>megamenu/type_cms</block></action>
+            <action method="addType"><type>static_block</type><model>cms/block</model><block>megamenu/type_static</block></action>
+        </block>
+        <reference name="head">
+            <action method="addCss" ifconfig="megamenu/general/active"><stylesheet>magenthemes/megamenu/css/megamenu.css</stylesheet></action>
+            <action method="addJs" ifconfig="megamenu/general/active"><script>magenthemes/megamenu/megamenu.js</script></action>
+        </reference>
+        <reference name="top.menu">
+            <action method="unsetChild" ifconfig="megamenu/general/active"><block>catalog.topnav</block></action>
+            <block type="megamenu/navigation_top" name="megamenu.nav.top">
+                <action method="setTemplate" ifconfig="megamenu/general/active"><template>megamenu/navigation/top.phtml</template></action>
+            </block>
+        </reference>
+    </default>
+</layout>
